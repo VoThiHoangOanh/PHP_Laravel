@@ -1,7 +1,7 @@
 @extends('layouts.admin')
-@section('title', 'Cập nhât danh mục sản phẩm')
+@section('title', 'Cập nhât slider')
 @section('content')
-<form action="{{route('category.update',['category'=>$category->id])}}" method="post" enctype="multipart/form-data">
+<form action="{{route('slider.update',['slider'=>$slider->id])}}" method="post" enctype="multipart/form-data">
   @method('PUT')
   @csrf
 <div class="content-wrapper">
@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>CẬP NHẬT DANH MỤC</h1>
+            <h1>CẬP NHẬT SLIDER</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-              <li class="breadcrumb-item active">cập nhật danh mục</li>
+              <li class="breadcrumb-item active">cập nhật Slider</li>
             </ol>
           </div>
         </div>
@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-6 text-right">
                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Lưu[Cập nhật]</button>
-                <a href="{{ route('category.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
+                <a href="{{ route('slider.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
             </div>
            </div>
           </div>
@@ -42,8 +42,8 @@
             <div class="row">
               <div class="col-md-9">
                 <div class="mb-3">
-                 <label for="name">Tên danh mục</label> 
-                 <input type="text" name="name" value="{{old('name',$category->name)}}" id="name" class="form-control"
+                 <label for="name">Tên Slider</label> 
+                 <input type="text" name="name" value="{{old('name',$slider->name)}}" id="name" class="form-control"
                   placeholder="Nhập tên danh mục">
                   @if($errors->has('name'))
                   <div class="text-danger">
@@ -53,23 +53,25 @@
                 </div>
 
                 <div class="mb-3">
-                 <label for="metakey">Từ Khoá</label>
-                 <textarea name="metakey" id="metakey" class="form-control"
-                  placeholder="Từ khoá tìm kiếm">{{old('metakey',$category->metakey)}}</textarea> 
-                  @if($errors->has('metakey'))
+                 <label for="link">Liên kết</label> 
+                 <input type="text" name="link" value="{{old('link')}}" 
+                 id="name" class="form-control"
+                  placeholder="Nhập link">
+                  @if($errors->has('link'))
                   <div class="text-danger">
-                    {{$errors->first('metakey')}}
+                    {{$errors->first('link')}}
                   </div>
                   @endif
                 </div>
 
                 <div class="mb-3">
-                 <label for="metadesc">Mô tả</label>
-                 <textarea name="metadesc" id="metadesc" class="form-control"
-                  placeholder="Nhập mô tả">{{old('metadesc',$category->metadesc)}}</textarea> 
-                  @if($errors->has('metadesc'))
+                 <label for="position">Vị trí</label> 
+                 <input type="text" name="position" value="{{old('position')}}" 
+                 id="name" class="form-control"
+                  placeholder="Nhập vị trí">
+                  @if($errors->has('position'))
                   <div class="text-danger">
-                    {{$errors->first('metadesc')}}
+                    {{$errors->first('position')}}
                   </div>
                   @endif
                 </div>
@@ -77,13 +79,6 @@
 
               </div>
               <div class="col-md-3">
-                <div class="mb-3">
-                 <label for="parent_id">Danh mục cấp cha</label> 
-                 <select class="form-control" name="parent_id" id="parent_id">
-                  <option value="0">--Cấp cha--</option>
-                  {!! $html_parent_id !!}
-                 </select>
-                </div>
 
                 <div class="mb-3">
                  <label for="sort_order">Vị trí sắp xếp</label> 

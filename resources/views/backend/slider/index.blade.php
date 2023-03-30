@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-@section('title', 'Tất cả danh mục sản phẩm')
+@section('title', 'Tất cả Slider')
 @section('content')
 
 {{-- @php
-    dd($list_category);
+    dd($list_slider);
 @endphp
  --}}
 
@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>TẤT CẢ DANH MỤC</h1>
+            <h1>TẤT CẢ SLIDER</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-              <li class="breadcrumb-item active">Tất cả danh mục</li>
+              <li class="breadcrumb-item active">Tất cả slider</li>
             </ol>
           </div>
         </div>
@@ -35,8 +35,8 @@
                 <button class="btn btn-sm btn-danger"type="submit"><i class="far fa-calendar-times"></i>Xoá</button>
             </div>
             <div class="col-md-6 text-right">
-                <a href="{{ route('category.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Thêm</a>
-                <a href="{{ route('category.trash') }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Thùng rác</a>
+                <a href="{{ route('slider.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Thêm</a>
+                <a href="{{ route('slider.trash') }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Thùng rác</a>
             </div>
            </div>
           </div>
@@ -54,14 +54,14 @@
                         Hình ảnh
                     </th>
                     <th style="width:250px;">
-                        Tên danh mục
+                        Tên slider
                     </th>
                    
                     <th>
-                        Slug
+                       Liên kết
                     </th>
                     <th style="width:160px;" class="text-center">
-                       Ngày đăng
+                       Vị trí
                     </th>
                     <th style="width:200px;" class="text-center">
                         Chức năng
@@ -73,47 +73,49 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($list_category as $category)
+                @foreach ($list_slider as $slider)
                 <tr>
                     <td class="text-center"><input type="checkbox"></td>
 
                     <td>
-                    <img class="img-fluid" src="{{ asset('public/images/category/'.$category->image)}}" alt="{{$category->image}}">
+                    <img class="img-fluid" src="{{ asset('public/images/slider/'.$slider->image)}}" alt="{{$slider->image}}">
                     </td>
 
-                    <td>{{ $category->name }}</td>
+                    <td>{{ $slider->name }}</td>
                    
-                    <td>{{ $category->slug }}</td>
-                    <td class="text-center">{{ $category->created_at }}</td>
+                    <td>{{ $slider->link }}</td>
+                    <td class="text-center">{{ $slider->position }}</td>
+
+                    <!-- <td class="text-center">{{ $slider->created_at }}</td> -->
 
                     <td class="text-center">
-                    @if($category->status==1)
-                    <a href="{{ route('category.status',['category'=>$category->id]) }}"
+                    @if($slider->status==1)
+                    <a href="{{ route('slider.status',['slider'=>$slider->id]) }}"
                             class="btn btn-sm btn-success">
                             <i class="fas fa-toggle-on"></i>
                     </a>
                     @else
-                    <a href="{{ route('category.status',['category'=>$category->id]) }}"
+                    <a href="{{ route('slider.status',['slider'=>$slider->id]) }}"
                             class="btn btn-sm btn-danger">
                             <i class="fas fa-toggle-off"></i>
                     </a>
                     @endif
 
-                       <a href="{{ route('category.edit',['category'=>$category->id]) }}"
+                       <a href="{{ route('slider.edit',['slider'=>$slider->id]) }}"
                             class="btn btn-sm btn-info">
                             <i class="fas fa-edit"></i>
                         </a> 
-                       <a href="{{ route('category.show',['category'=>$category->id]) }}" 
+                       <a href="{{ route('slider.show',['slider'=>$slider->id]) }}" 
                             class="btn btn-sm btn-success">
                             <i class="fas fa-eye"></i>
                         </a> 
-                       <a href="{{ route('category.delete',['category'=>$category->id]) }}"
+                       <a href="{{ route('slider.delete',['slider'=>$slider->id]) }}"
                             class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                         </a> 
 
                     </td>
-                    <td class="text-center">{{ $category->id }}</td>
+                    <td class="text-center">{{ $slider->id }}</td>
                 </tr>
                 @endforeach
             </tbody>

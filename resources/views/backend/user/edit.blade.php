@@ -1,7 +1,7 @@
 @extends('layouts.admin')
-@section('title', 'Cập nhât danh mục sản phẩm')
+@section('title', 'Cập nhât người dùng')
 @section('content')
-<form action="{{route('category.update',['category'=>$category->id])}}" method="post" enctype="multipart/form-data">
+<form action="{{route('user.update',['user'=> $user->id])}}" method="post" enctype="multipart/form-data">
   @method('PUT')
   @csrf
 <div class="content-wrapper">
@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>CẬP NHẬT DANH MỤC</h1>
+            <h1>CẬP NHẬT NGƯỜI DÙNG</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-              <li class="breadcrumb-item active">cập nhật danh mục</li>
+              <li class="breadcrumb-item active">cập nhật người dùng</li>
             </ol>
           </div>
         </div>
@@ -33,18 +33,65 @@
             </div>
             <div class="col-md-6 text-right">
                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Lưu[Cập nhật]</button>
-                <a href="{{ route('category.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
+                <a href="{{ route('user.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
             </div>
            </div>
           </div>
           <div class="card-body">
             @includeIf('backend.message_alert')
             <div class="row">
-              <div class="col-md-9">
+              <div class="col-md-6">
                 <div class="mb-3">
-                 <label for="name">Tên danh mục</label> 
-                 <input type="text" name="name" value="{{old('name',$category->name)}}" id="name" class="form-control"
+                 <label for="username">Tên tài khoản</label> 
+                 <input type="text" name="username" value="{{old('username',$user->username)}}" id="username" class="form-control"
                   placeholder="Nhập tên danh mục">
+                  @if($errors->has('username'))
+                  <div class="text-danger">
+                    {{$errors->first('username')}}
+                  </div>
+                  @endif
+                </div>
+
+                <div class="mb-3">
+                 <label for="email">Email</label> 
+                 <input type="text" name="email" value="{{old('email',$user->email)}}" id="email" class="form-control"
+                  placeholder="Nhập email">
+                  @if($errors->has('email'))
+                  <div class="text-danger">
+                    {{$errors->first('email')}}
+                  </div>
+                  @endif
+                </div>
+
+                <div class="mb-3">
+                 <label for="password">Mật khẩu</label> 
+                 <input type="password" name="password" value="{{old('password',$user->password)}}" id="password" class="form-control"
+                  placeholder="Nhập password">
+                  @if($errors->has('password'))
+                  <div class="text-danger">
+                    {{$errors->first('password')}}
+                  </div>
+                  @endif
+                </div>
+
+                <div class="mb-3">
+                 <label for="password_re">Xác nhận mật khẩu</label> 
+                 <input type="password" name="password_re" value="{{old('password_re')}}" id="password_re" class="form-control"
+                  placeholder="Xác nhận mật khẩu">
+                  @if($errors->has('password_re'))
+                  <div class="text-danger">
+                    {{$errors->first('password_re')}}
+                  </div>
+                  @endif
+                </div>
+
+              </div>
+              <div class="col-md-6">
+
+                <div class="mb-3">
+                 <label for="name">Họ tên</label> 
+                 <input type="text" name="name" value="{{old('name',$user->name)}}" id="name" class="form-control"
+                  placeholder="Nhập họ tên">
                   @if($errors->has('name'))
                   <div class="text-danger">
                     {{$errors->first('name')}}
@@ -52,45 +99,29 @@
                   @endif
                 </div>
 
+                
                 <div class="mb-3">
-                 <label for="metakey">Từ Khoá</label>
-                 <textarea name="metakey" id="metakey" class="form-control"
-                  placeholder="Từ khoá tìm kiếm">{{old('metakey',$category->metakey)}}</textarea> 
-                  @if($errors->has('metakey'))
+                 <label for="phone">Điện thoại</label> 
+                 <input type="text" name="phone" value="{{old('phone',$user->phone)}}" id="phone" class="form-control"
+                  placeholder="Nhập phone">
+                  @if($errors->has('phone'))
                   <div class="text-danger">
-                    {{$errors->first('metakey')}}
+                    {{$errors->first('phone')}}
                   </div>
                   @endif
                 </div>
 
                 <div class="mb-3">
-                 <label for="metadesc">Mô tả</label>
-                 <textarea name="metadesc" id="metadesc" class="form-control"
-                  placeholder="Nhập mô tả">{{old('metadesc',$category->metadesc)}}</textarea> 
-                  @if($errors->has('metadesc'))
+                 <label for="gender">Giới tính</label> 
+                 <select class="form-control" name="gender" id="gender">
+                    <option value="1">Nam</option>
+                    <option value="2">Nữ</option>
+                 </select>
+                 @if($errors->has('gender'))
                   <div class="text-danger">
-                    {{$errors->first('metadesc')}}
+                    {{$errors->first('gender')}}
                   </div>
                   @endif
-                </div>
-
-
-              </div>
-              <div class="col-md-3">
-                <div class="mb-3">
-                 <label for="parent_id">Danh mục cấp cha</label> 
-                 <select class="form-control" name="parent_id" id="parent_id">
-                  <option value="0">--Cấp cha--</option>
-                  {!! $html_parent_id !!}
-                 </select>
-                </div>
-
-                <div class="mb-3">
-                 <label for="sort_order">Vị trí sắp xếp</label> 
-                 <select class="form-control" name="sort_order" id="sort_order">
-                  <option value="0">--Vị trí sắp xếp--</option>
-                  {!! $html_sort_order !!}
-                 </select>
                 </div>
 
                 <div class="mb-3">

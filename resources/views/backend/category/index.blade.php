@@ -53,14 +53,21 @@
                     <th style="width:100px;" class="text-center">
                         Hình ảnh
                     </th>
-                    <th style="width:250px;">
+                    <th style="width:200px;">
                         Tên danh mục
                     </th>
                    
                     <th>
                         Slug
                     </th>
-                    <th style="width:160px;" class="text-center">
+
+                    
+
+                    <!-- <th style="width:50px;" class="text-center">
+                       Nội dung mô tả
+                    </th> -->
+
+                    <th style="width:260px;" class="text-center">
                        Ngày đăng
                     </th>
                     <th style="width:200px;" class="text-center">
@@ -84,6 +91,9 @@
                     <td>{{ $category->name }}</td>
                    
                     <td>{{ $category->slug }}</td>
+
+                    <!-- <td>{{ $category->metadesc }}</td> -->
+
                     <td class="text-center">{{ $category->created_at }}</td>
 
                     <td class="text-center">

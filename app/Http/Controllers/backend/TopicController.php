@@ -57,10 +57,8 @@ class TopicController extends Controller
        $topic->metadesc=$request->metadesc;
        $topic->parent_id=$request->parent_id;
        $topic->sort_order=$request->sort_order;
-    //    $topic->image=$request->image;
        $topic->created_at=date('Y-m-d H:i:s');
        $topic->created_by=1;
-       $topic->updated_by=1;
        $topic->status=$request->status;
        // upload file
        if($request->has('image'))
@@ -192,7 +190,7 @@ class TopicController extends Controller
 
          $link= Link::where([['type','=','topic'],['table_id','=',$id]])->first();
          $link->delete();
-         return redirect()->route('topic.trash')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+         return redirect()->route('topic.trash')->with('message',['type'=>'success','msg'=>'Xoá Thành công']);
  
         }
        

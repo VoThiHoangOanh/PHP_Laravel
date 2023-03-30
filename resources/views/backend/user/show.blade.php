@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Chi tiết danh mục sản phẩm')
+@section('title', 'Chi tiết người dùng')
 @section('content')
 
 <div class="content-wrapper">
@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>CHI TIẾT DANH MỤC</h1>
+            <h1>CHI TIẾT NGƯỜI DÙNG</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-              <li class="breadcrumb-item active">Chi tiết danh mục</li>
+              <li class="breadcrumb-item active">Chi tiết người dùng</li>
             </ol>
           </div>
         </div>
@@ -30,10 +30,10 @@
                 
             </div>
             <div class="col-md-6 text-right">
-            <a href="{{ route('category.edit',['category'=>$category->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-            <a href="{{ route('category.delete',['category'=>$category->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xoá </a>
+            <a href="{{ route('user.edit',['user'=>$user->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+            <a href="{{ route('user.delete',['user'=>$user->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xoá </a>
 
-                <a href="{{ route('category.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
+                <a href="{{ route('user.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
             </div>
            </div>
           </div>
@@ -46,35 +46,31 @@
 
                 <tr>
                   <td>ID</td>
-                  <td>{{$category->id}}</td>
+                  <td>{{$user->id}}</td>
                 </tr>
 
                 <tr>
                   <td>Name</td>
-                  <td>{{$category->name}}</td>
+                  <td>{{$user->name}}</td>
+                </tr>
+                <tr>
+                  <td>Username</td>
+                  <td>{{$user->username}}</td>
                 </tr>
 
                 <tr>
-                  <td>Slug</td>
-                  <td>{{$category->slug}}</td>
-                </tr>
-
-                <!-- <tr>
-                  <td>Parent_id</td>
-                  <td>{{$category->parent_id}}</td>
+                  <td>Email</td>
+                  <td>{{$user->email}}</td>
                 </tr>
 
                 <tr>
-                  <td>Sort_order</td>
-                  <td>{{$category->sort_order}}</td>
-                </tr> -->
-                <tr>
-                  <td>Metakey</td>
-                  <td>{{$category->metakey}}</td>
+                  <td>Password</td>
+                  <td>{{$user->password}}</td>
                 </tr>
+
                 <tr>
-                  <td>Metadesc</td>
-                  <td>{{$category->metadesc}}</td>
+                  <td>Phone</td>
+                  <td>{{$user->phone}}</td>
                 </tr>
 
                

@@ -30,10 +30,10 @@
                 
             </div>
             <div class="col-md-6 text-right">
-            <a href="{{ route('category.edit',['category'=>$category->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-            <a href="{{ route('category.delete',['category'=>$category->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xoá </a>
+            <a href="{{ route('slider.edit',['slider'=>$slider->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+            <a href="{{ route('slider.delete',['slider'=>$slider->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xoá </a>
 
-                <a href="{{ route('category.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
+                <a href="{{ route('slider.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
             </div>
            </div>
           </div>
@@ -46,35 +46,21 @@
 
                 <tr>
                   <td>ID</td>
-                  <td>{{$category->id}}</td>
+                  <td>{{$slider->id}}</td>
                 </tr>
 
                 <tr>
                   <td>Name</td>
-                  <td>{{$category->name}}</td>
+                  <td>{{$slider->name}}</td>
                 </tr>
 
                 <tr>
-                  <td>Slug</td>
-                  <td>{{$category->slug}}</td>
-                </tr>
-
-                <!-- <tr>
-                  <td>Parent_id</td>
-                  <td>{{$category->parent_id}}</td>
-                </tr>
-
-                <tr>
-                  <td>Sort_order</td>
-                  <td>{{$category->sort_order}}</td>
-                </tr> -->
-                <tr>
-                  <td>Metakey</td>
-                  <td>{{$category->metakey}}</td>
+                  <td>Link</td>
+                  <td>{{$slider->link}}</td>
                 </tr>
                 <tr>
-                  <td>Metadesc</td>
-                  <td>{{$category->metadesc}}</td>
+                  <td>Position</td>
+                  <td>{{$slider->position}}</td>
                 </tr>
 
                

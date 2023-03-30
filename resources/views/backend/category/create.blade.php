@@ -64,6 +64,7 @@
 
                 <div class="mb-3">
                  <label for="metadesc">Mô tả</label>
+                 
                  <textarea name="metadesc" id="metadesc" class="form-control"
                   placeholder="Nhập mô tả">{{old('metadesc')}}</textarea> 
                   @if($errors->has('metadesc'))

@@ -17,7 +17,8 @@ class CategoryController extends Controller
     #GET: admin/category, admin/category/index
     public function index()
     {
-        $list_category = Category::where('status','!=',0)->orderBy('created_at','desc')->get();
+        $list_category = Category::where('status','!=',0)
+        ->orderBy('created_at','desc')->get();
         return view('backend.category.index', compact('list_category'));
     }
 
@@ -57,10 +58,8 @@ class CategoryController extends Controller
        $category->metadesc=$request->metadesc;
        $category->parent_id=$request->parent_id;
        $category->sort_order=$request->sort_order;
-    //    $category->image=$request->image;
        $category->created_at=date('Y-m-d H:i:s');
        $category->created_by=1;
-       $category->updated_by=1;
        $category->status=$request->status;
        // upload file
        if($request->has('image'))
@@ -188,7 +187,7 @@ class CategoryController extends Controller
 
          $link= Link::where([['type','=','category'],['table_id','=',$id]])->first();
          $link->delete();
-         return redirect()->route('category.trash')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+         return redirect()->route('category.trash')->with('message',['type'=>'success','msg'=>'Xoá Thành công']);
  
         }
        

@@ -262,7 +262,7 @@ class MenuController extends Controller
 
          $link= Link::where([['type','=','menu'],['table_id','=',$id]])->first();
          $link->delete();
-         return redirect()->route('menu.trash')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+         return redirect()->route('menu.trash')->with('message',['type'=>'success','msg'=>'Xoá Thành công']);
  
         }
        

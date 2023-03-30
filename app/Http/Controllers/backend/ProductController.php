@@ -73,7 +73,6 @@ class ProductController extends Controller
        $product->metadesc=$request->metadesc;
        $product->created_at=date('Y-m-d H:i:s');
        $product->created_by=1;
-       $product->updated_by=1;
        $product->status=$request->status;
        if($product->save()==1)
        {//lưu hình
@@ -216,7 +215,7 @@ class ProductController extends Controller
 
          $link= Link::where([['type','=','product'],['table_id','=',$id]])->first();
          $link->delete();
-         return redirect()->route('product.trash')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+         return redirect()->route('product.trash')->with('message',['type'=>'success','msg'=>'Xoá Thành công']);
  
         }
        

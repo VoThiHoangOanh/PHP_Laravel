@@ -60,7 +60,6 @@ class BrandController extends Controller
     //    $brand->image=$request->image;
        $brand->created_at=date('Y-m-d H:i:s');
        $brand->created_by=1;
-       $brand->updated_by=1;
        $brand->status=$request->status;
        // upload file
        if($request->has('image'))
@@ -192,7 +191,7 @@ class BrandController extends Controller
 
          $link= Link::where([['type','=','brand'],['table_id','=',$id]])->first();
          $link->delete();
-         return redirect()->route('brand.trash')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+         return redirect()->route('brand.trash')->with('message',['type'=>'success','msg'=>'Xoá Thành công']);
  
         }
        

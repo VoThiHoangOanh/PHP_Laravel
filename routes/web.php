@@ -8,7 +8,9 @@ use App\Http\Controllers\backend\PostController;
 use App\Http\Controllers\backend\PageController;
 use App\Http\Controllers\backend\MenuController;
 use App\Http\Controllers\backend\SliderController;
-
+use App\Http\Controllers\backend\OrderController;
+use App\Http\Controllers\backend\OrderDetailController;
+use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\BrandController;
 use App\Http\Controllers\backend\DashboardController;
@@ -94,6 +96,33 @@ Route::prefix('admin')->group(function () {
 
     });
 
+    //order
+    Route::resource('order', OrderController::class);
+    Route::get('order_trash',[OrderController::class,'trash'])->name('order.trash');
+
+    Route::prefix('order')->group(function () {
+        Route::get('status/{order}',[OrderController::class,'status'])->name('order.status');
+        Route::get('delete/{order}',[OrderController::class,'delete'])->name('order.delete');
+        Route::get('restore/{order}',[OrderController::class,'restore'])->name('order.restore');
+        Route::get('destroy/{order}',[OrderController::class,'destroy'])->name('order.destroy');
+
+    });
+
+   // orderdetail
+    Route::resource('orderdetail', OrderDetailController::class);
+    Route::get('orderdetail_trash',[OrderDetailController::class,'trash'])->name('orderdetail.trash');
+
+    Route::prefix('orderdetail')->group(function () {
+        Route::get('status/{orderdetail}',[OrderDetailController::class,'status'])->name('orderdetail.status');
+        Route::get('delete/{orderdetail}',[OrderDetailController::class,'delete'])->name('orderdetail.delete');
+        Route::get('restore/{orderdetail}',[OrderDetailController::class,'restore'])->name('orderdetail.restore');
+        Route::get('destroy/{orderdetail}',[OrderDetailController::class,'destroy'])->name('orderdetail.destroy');
+
+    });
+
+
+
+
     //menu
     Route::resource('menu', MenuController::class);
     Route::get('menu_trash',[MenuController::class,'trash'])->name('menu.trash');
@@ -115,6 +144,19 @@ Route::prefix('admin')->group(function () {
         Route::get('delete/{slider}',[SliderController::class,'delete'])->name('slider.delete');
         Route::get('restore/{slider}',[SliderController::class,'restore'])->name('slider.restore');
         Route::get('destroy/{slider}',[SliderController::class,'destroy'])->name('slider.destroy');
+
+    });
+
+
+    //user
+    Route::resource('user', UserController::class);
+    Route::get('user_trash',[UserController::class,'trash'])->name('user.trash');
+
+    Route::prefix('user')->group(function () {
+        Route::get('status/{user}',[UserController::class,'status'])->name('user.status');
+        Route::get('delete/{user}',[UserController::class,'delete'])->name('user.delete');
+        Route::get('restore/{user}',[UserController::class,'restore'])->name('user.restore');
+        Route::get('destroy/{user}',[UserController::class,'destroy'])->name('user.destroy');
 
     });
 

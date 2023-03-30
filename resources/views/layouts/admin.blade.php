@@ -126,5 +126,16 @@
 <!-- AdminLTE App -->
 <script src="{{asset('public/dist/js/adminlte.min.js')}}"></script>
 
+<script src="{{asset('public/ckeditor/ckeditor.js')}}"></script>
+
+<!-- <script src="//cdn.ckeditor.com/4.21.0/full/ckeditor.js"></script> -->
+<!-- <script type="text/javascript" lang="javascript">
+  CKEDITOR.replace("ckeditor_mota")
+</script> -->
+
+<!-- <script type="text/javascript">
+  CKEDITOR.replace("ckeditor_mota");
+
+</script> -->
 </body>
 </html>
