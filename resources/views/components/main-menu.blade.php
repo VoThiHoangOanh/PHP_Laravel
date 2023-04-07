@@ -6,11 +6,16 @@
 						
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-							<li><a href="{{URL::to('/trang-chu')}}" class="active">Trang chủ</a></li>
+							
                             @foreach ($list_menu as $row_menu)
-                            <li class="nav-item">
+							<li class="nav-item">
+							<a class ="nav-link text-light text-uppercase" href="{{$row_menu->link}}">{{$row_menu->name}}</a>
+							</li>
+
+                            <!-- <li class="nav-item">
+
                                 <a class ="nav-link" href="">{{$row_menu->name}}</a>
-                            </li>
+                            </li> -->
                             @endforeach
 								<!-- <li class="dropdown"><a href="#">Tất cả danh mục sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">

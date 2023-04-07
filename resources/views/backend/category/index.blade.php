@@ -129,6 +129,9 @@
             </tbody>
         </table>
           </div>
+          <div>
+          {{ $list_category->links() }}
+          </div>
           <!-- /.card-body -->
           <div class="card-footer">
             Footer

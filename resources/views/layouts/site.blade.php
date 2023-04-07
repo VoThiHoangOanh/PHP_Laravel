@@ -12,7 +12,8 @@
     <link href="{{asset('public/css/price-range.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/animate.css')}}" rel="stylesheet">
 	<link href="{{asset('public/css/main.css')}}" rel="stylesheet">
-	<link href="{{asset('public/css/responsive.css')}}" rel="stylesheet">     
+	<link href="{{asset('public/css/responsive.css')}}" rel="stylesheet">   
+	@yield('header')
     <link rel="shortcut icon" href="public/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('public/images/ico/apple-touch-icon-144-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('public/images/ico/apple-touch-icon-114-precomposed.png')}}">
@@ -77,110 +78,7 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						<h2>Danh mục sản phẩm</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Thời trang nữ
-										</a>
-									</h4>
-								</div>
-								<div id="sportswear" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">ÁO Sơ mi </a></li>
-											<li><a href="#">Đầm </a></li>
-											<li><a href="#">Váy ngắn </a></li>
-											<li><a href="#">Áo phông</a></li>
-											<li><a href="#">Quần Jean </a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#mens">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Thời Trang Nam
-										</a>
-									</h4>
-								</div>
-								<div id="mens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">Áo sơ mi</a></li>
-											<li><a href="#">Áo Polo</a></li>
-											<li><a href="#">Quần Jean</a></li>
-											<li><a href="#">Áo Khoác</a></li>
-											<li><a href="#">Quần jogger</a></li>
-											<li><a href="#">Quần Kaki</a></li>
-											<li><a href="#">Áo thun</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Trẻ em</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Đầm</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Áo Len</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Quần jogger</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Túi xách</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Giày</a></h4>
-								</div>
-							</div>
-						</div><!--/category-products-->
-					
-						<div class="brands_products"><!--brands_products-->
-							<h2>Thương Hiệu</h2>
-							<div class="brands-name">
-								<ul class="nav nav-pills nav-stacked">
-									<li><a href="#"> <span class="pull-right"></span>Gucci</a></li>
-									<li><a href="#"> <span class="pull-right"></span> Prada</a></li>
-									<li><a href="#"> <span class="pull-right"></span>Dior</a></li>
-									<li><a href="#"> <span class="pull-right"></span>Chanel</a></li>
-									<li><a href="#"> <span class="pull-right"></span>Zara</a></li>
-									<li><a href="#"> <span class="pull-right"></span>Rolex</a></li>
-								</ul>
-							</div>
-						</div><!--/brands_products-->
-						
-						
-						
-						<div class="shipping text-center">
-							<img src="{{ asset('public/images/home/shipping.jpg')}}" alt="" />
-						</div>
-					
-					</div>
-				</div>
-				
+								
 				@yield('content')
 			</div>
 		</div>
@@ -272,5 +170,7 @@
 	<script src="{{asset('public/js/price-range.js')}}"></script>
     <script src="{{asset('public/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('public/js/main.js')}}"></script>
+    <script src="{{asset('public/js/jquery-1.12.4.js')}}" type="text/javascript"></script>
+	@yield('footer')
 </body>
 </html>

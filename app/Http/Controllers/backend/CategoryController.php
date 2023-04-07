@@ -18,7 +18,8 @@ class CategoryController extends Controller
     public function index()
     {
         $list_category = Category::where('status','!=',0)
-        ->orderBy('created_at','desc')->get();
+        ->orderBy('created_at','desc')
+        ->paginate(5);
         return view('backend.category.index', compact('list_category'));
     }
 

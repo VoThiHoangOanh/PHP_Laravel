@@ -28,7 +28,8 @@ class MenuController extends Controller
         $list_brand = Brand::where('status','!=',0)->orderBy('created_at','desc')->get();
         $list_topic = Topic::where('status','!=',0)->orderBy('created_at','desc')->get();
         $list_page = Post::where([['status','!=',0],['type','=','page']])->orderBy('created_at','desc')->get();
-        $list_menu = Menu::where('status','!=',0)->orderBy('created_at','desc')->get();
+        $list_menu = Menu::where('status','!=',0)->orderBy('created_at','desc')
+        ->paginate(9);
 
         return view('backend.menu.index', compact('list_category','list_brand','list_topic','list_page','list_menu'));
     }

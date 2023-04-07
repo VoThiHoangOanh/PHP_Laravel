@@ -35,7 +35,6 @@
                 <button class="btn btn-sm btn-danger"type="submit"><i class="far fa-calendar-times"></i>Xoá</button>
             </div>
             <div class="col-md-6 text-right">
-                <a href="{{ route('order.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Thêm</a>
                 <a href="{{ route('order.trash') }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Thùng rác</a>
             </div>
            </div>
@@ -50,19 +49,18 @@
                     <th style="width:20px;" class="text-center">
                         #
                     </th>
-                    <th style="width:100px;" class="text-center">
-                        Hình ảnh
+                    <th style="width:100px;">
+                        Họ tên 
                     </th>
-                    <th style="width:200px;">
-                        Tên danh mục
+                    <th style="width:100px;">
+                        Email
                     </th>
-                   
-                    <th>
-                        Slug
+                    <th style="width:100px;">
+                        Điện thoại
                     </th>
 
-                    <th style="width:260px;" class="text-center">
-                       Ngày đăng
+                    <th style="width:100px;" class="text-center">
+                       Ngày tạo
                     </th>
                     <th style="width:200px;" class="text-center">
                         Chức năng
@@ -77,17 +75,10 @@
                 @foreach ($list_order as $order)
                 <tr>
                     <td class="text-center"><input type="checkbox"></td>
-
-                    <td>
-                    <img class="img-fluid" src="{{ asset('public/images/order/'.$order->image)}}" alt="{{$order->image}}">
-                    </td>
-
                     <td>{{ $order->name }}</td>
                    
-                    <td>{{ $order->slug }}</td>
-
-                    <!-- <td>{{ $order->metadesc }}</td> -->
-
+                    <td>{{ $order->email }}</td>
+                    <td>{{ $order->phone }}</td>
                     <td class="text-center">{{ $order->created_at }}</td>
 
                     <td class="text-center">
@@ -123,6 +114,9 @@
             </tbody>
         </table>
           </div>
+          <div>
+        {{ $list_order->links() }}
+        </div>
           <!-- /.card-body -->
           <div class="card-footer">
             Footer

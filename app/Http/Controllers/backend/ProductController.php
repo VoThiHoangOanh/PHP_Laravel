@@ -24,7 +24,8 @@ class ProductController extends Controller
     public function index()
     {
         $list_product = Product :: join('vtho_product_image','vtho_product_image.product_id','=','vtho_product.id')
-        ->where('vtho_product.status','!=',0)->orderBy('vtho_product.created_at','desc')->get();
+        ->where('vtho_product.status','!=',0)->orderBy('vtho_product.created_at','desc')
+        ->paginate(9);
         return view('backend.product.index', compact('list_product'));
     }
 

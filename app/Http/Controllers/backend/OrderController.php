@@ -19,8 +19,13 @@ class OrderController extends Controller
     #GET: admin/order, admin/order/index
     public function index()
     {
-        $list_order = Order::where('status','!=',0)->orderBy('created_at','desc')->get();
+        $list_order = Order ::
+        join('vtho_orderdetail','vtho_orderdetail.order_id','=','vtho_order.id')
+        ->join('vtho_user','vtho_user.id','=','vtho_order.user_id')
+        ->orderBy('vtho_order.created_at','desc')
+        ->paginate(9);
         return view('backend.order.index', compact('list_order'));
+
     }
 
     #GET:  admin/order/trash
@@ -34,57 +39,15 @@ class OrderController extends Controller
     
     public function create()
     {
-        $list_order = Order::where('status','!=',0)->get();
-        $html_parent_id='';
-        $html_sort_order='';
-
-        foreach($list_order as $item)
-        {
-            $html_parent_id.='<option value="'.$item->id.'">'.$item->name.'</option>';
-            $html_sort_order.='<option value="'.$item->sort_order.'">Sau: '.$item->name.'</option>';
-
-        }
-        return view('backend.order.create',compact('html_parent_id','html_sort_order'));
+        
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(OrderStoreRequest $request)
+    public function store($request)
     {
-       $order=new Order;// tạo mới
-       $order->name=$request->name;
-       $order->slug= Str::slug($order->name=$request->name,'-');
-       $order->metakey=$request->metakey;
-       $order->metadesc=$request->metadesc;
-       $order->parent_id=$request->parent_id;
-       $order->sort_order=$request->sort_order;
-       $order->created_at=date('Y-m-d H:i:s');
-       $order->created_by=1;
-       $order->status=$request->status;
-       // upload file
-       if($request->has('image'))
-       {
-        $path_dir="public/images/order/";
-        $file=$request->file('image');
-        $extension = $file->getClientOriginalExtension();
-        $filename= $order->slug .'.' . $extension;
-        $file->move($path_dir,$filename);
-        $order->image=$filename;
-       }
-        // end upload file  
-       if($order->save())//lưu vào csdl
-       {
-        $link=new Link();
-        $link->slug= $order->slug;
-        $link->table_id= $order->id;
-        $link->type='order';
-        $link->save();
-        return redirect()->route('order.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
-
-       }
-       return redirect()->route('order.index')->with('message',['type'=>'danger','msg'=>'Thêm thất bại']);
-
+       
     }
 
     /**
@@ -108,18 +71,12 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        $order=Order::find($id);
-        $list_order = Order::where('status','!=',0)->get();
-        $html_parent_id='';
-        $html_sort_order='';
-
-        foreach($list_order as $item)
-        {
-            $html_parent_id.='<option value="'.$item->id.'">'.$item->name.'</option>';
-            $html_sort_order.='<option value="'.$item->sort_order.'">Sau: '.$item->name.'</option>';
-
-        }
-        return view('backend.order.edit',compact('order','html_parent_id','html_sort_order'));
+        $list_order = Order ::where('vtho_order.id','=',$id)
+        ->join('vtho_orderdetail','vtho_orderdetail.order_id','=','vtho_order.id')
+        ->join('vtho_user','vtho_user.id','=','vtho_order.user_id')
+        ->orderBy('vtho_order.created_at','desc')
+        ->first();
+        return view('backend.order.edit',compact('list_order'));
     }
 
     /**
@@ -129,11 +86,9 @@ class OrderController extends Controller
     {
        $order= Order::find($id);//lấy mẫu tin
        $order->name=$request->name;
-       $order->slug= Str::slug($order->name=$request->name,'-');
-       $order->metakey=$request->metakey;
-       $order->metadesc=$request->metadesc;
-       $order->parent_id=$request->parent_id;
-       $order->sort_order=$request->sort_order;
+       $slug= Str::slug($order->name=$request->name,'-');
+       $order->phone=$request->phone;
+       $email->phone=$request->email;
        $order->updated_at=date('Y-m-d H:i:s');
        $order->updated_by=1;
        $order->status=$request->status;
@@ -148,7 +103,7 @@ class OrderController extends Controller
        
         $file= $request->file('image');
         $extension = $file->getClientOriginalExtension();
-        $filename= $order->slug .'.' . $extension;
+        $filename= $slug .'.' . $extension;
         $file->move($path_dir, $filename);
         $order->image= $filename;
        }

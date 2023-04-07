@@ -17,7 +17,8 @@ class TopicController extends Controller
     #GET: admin/topic, admin/topic/index
     public function index()
     {
-        $list_topic = Topic::where('status','!=',0)->orderBy('created_at','desc')->get();
+        $list_topic = Topic::where('status','!=',0)->orderBy('created_at','desc')
+        ->paginate(9);
         return view('backend.topic.index', compact('list_topic'));
     }
 

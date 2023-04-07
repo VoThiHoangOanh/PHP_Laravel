@@ -17,7 +17,8 @@ class UserController extends Controller
     #GET: admin/user, admin/user/index
     public function index()
     {
-        $list_user = User::where([['roles', '=', 'admin'],['status', '!=', 0] ])->get();
+        $list_user = User::where([['roles', '=', 'admin'],['status', '!=', 0] ])
+        ->paginate(9);
         return view('backend.user.index', compact('list_user'));
     }
 

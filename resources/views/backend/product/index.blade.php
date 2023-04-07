@@ -119,6 +119,9 @@
             </tbody>
         </table>
           </div>
+          <div>
+          {{ $list_product->links() }}
+          </div>
           <!-- /.card-body -->
           <div class="card-footer">
             Footer
