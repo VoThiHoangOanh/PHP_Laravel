@@ -10,4 +10,8 @@ class Category extends Model
     use HasFactory;
     protected $table='vtho_category';
 
+    public function CategorySub(){
+        return $this->hasMany(Category::class,'parent_id');
+    }
+
 }

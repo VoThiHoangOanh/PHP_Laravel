@@ -82,7 +82,7 @@ class SiteController extends Controller
         $row_brand= Brand::where([['slug','=',$slug],['status','=','1']])->first();
         $product_list= Product::where([['status','=','1'],['brand_id','=',$row_brand->id]])
         ->orderBy('created_at','desc')
-        ->paginate(9);
+        ->paginate(4);
         return view('frontend.product-brand',compact('row_brand','product_list'));
     }
     private function product_category($slug)
@@ -121,7 +121,7 @@ class SiteController extends Controller
         $product_list= Product::where('status',1)
         ->whereIn('category_id',$list_category_id)
         ->orderBy('created_at','desc')
-        ->paginate(9);
+        ->paginate(4);
         return view('frontend.product-category',compact ('product_list','row_cat') );
     }
     
