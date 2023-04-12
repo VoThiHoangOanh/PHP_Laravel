@@ -32,15 +32,11 @@
           <div class="row">
             <div class="col-md-12">
               <strong>
-                <span class="price">250.000đ</span>
-                <del>250.000đ</del>
+                <span class="price">{{$product->price_buy}} VND</span>
+                <del>{{$product->price_sale}}</del>
               </strong>
             </div>
             <div class="col-md-12 text-center">
-              <!-- <a   class="cart" href="cart.html">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-              </a> -->
-
               <a href="cart.html" class="btn btn-default add-to-cart">
                 <i class="fa fa-shopping-cart" aria-hidden="true">
 
@@ -49,7 +45,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="product-sale">-10%</div> -->
       </div>
       </div>
       @endforeach

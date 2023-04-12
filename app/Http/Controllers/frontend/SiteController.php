@@ -19,10 +19,6 @@ class SiteController extends Controller
         }
         else{
             $link = Link::where('slug','=',$slug)->first();
-            // if($product==null)
-            // {
-            //     $product=Product:: where([['status','=','1'],['slug','=','$slug']])->first();
-            // }
             if($link!=NULL)
             {
                 $type = $link->type; 
@@ -127,7 +123,7 @@ class SiteController extends Controller
     
     private function product_detail($product)
     {
-        return view('frontend.product-detail');
+        return view('frontend.product-detail',compact('product'));
     }
     private function post_topic($slug)
     {

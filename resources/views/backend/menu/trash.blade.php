@@ -80,7 +80,7 @@
                             class="btn btn-sm btn-success">
                             <i class="fas fa-eye"></i>
                         </a> 
-                       <a href="{{ route('menu.delete',['menu'=>$menu->id]) }}"
+                       <a href="{{ route('menu.destroy',['menu'=>$menu->id]) }}"
                             class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                         </a> 

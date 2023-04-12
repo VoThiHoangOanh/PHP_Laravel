@@ -207,10 +207,10 @@
                   <thead>
                       <tr>
                           <th style="width:20px;" class="text-center">#</th>
-                          <th style="width:250px;"class="text-center">Tên Menu</th>
-                          <th style="width:100px;"class="text-center">Liên kết</th>
+                          <th style="width:200px;"class="text-center">Tên Menu</th>
+                          <th style="width:200px;"class="text-center">Liên kết</th>
                           <th style="width:100px;" class="text-center">Vị trí</th>
-                          <th style="width:300px;" class="text-center"> Chức năng</th>
+                          <th style="width:200px;" class="text-center"> Chức năng</th>
                           <th style="width:20px;" class="text-center">ID </th>
                     
                       </tr>

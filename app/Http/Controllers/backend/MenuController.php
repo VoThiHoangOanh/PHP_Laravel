@@ -245,30 +245,12 @@ class MenuController extends Controller
     public function destroy(string $id)
     {
         $menu= Menu::find($id);
-        //lay ra thông tin tấm hình cần xoá
-        $path_dir="public/images/menu/";
-        $path_image_delete=($path_dir.$menu->image);
-        //
-        if ($menu == null){
-         return redirect()->route('menu.trash')->with('message',['type'=>'danger','msg'=>'Mẫu tin không tồn tại']);
- 
-        }
-
         if($menu->delete())//lưu vào csdl
         {
-            if(File::exists($path_image_delete))
-            {
-                File::delete($path_image_delete);
-            }
-
-         $link= Link::where([['type','=','menu'],['table_id','=',$id]])->first();
-         $link->delete();
          return redirect()->route('menu.trash')->with('message',['type'=>'success','msg'=>'Xoá Thành công']);
- 
         }
        
          return redirect()->route('menu.trash')->with('message',['type'=>'danger','msg'=>'Xoá không thành công']);
-
     }
 
     //GET:admin/menu/status/1
@@ -295,7 +277,7 @@ class MenuController extends Controller
         return redirect()->route('menu.index')->with('message',['type'=>'danger','msg'=>'Mẫu tin không tồn tại']);
 
        }
-       $menu->status=0;
+        $menu->status=0;
         $menu->updated_at= date('Y-m-d H:i:s');
         $menu->updated_by=1;
         $menu->save();

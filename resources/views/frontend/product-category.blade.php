@@ -42,17 +42,15 @@
               <div class="product-price">
                 <div class="row text-center">
                   <div class="col-md-12">
-                    <strong>
-                      <span class="price">250.000đ</span>
-                      <del>250.000đ</del>
-                    </strong>
+                  <strong>
+                    <span class="price">{{$product->price_buy}} VND</span>
+                    <del>{{$product->price_sale}}</del>
+                  </strong>
                   </div>
                   <div class="col-md-12 text-center">
                     <a href="cart.html" class="btn btn-default add-to-cart">
                       <i class="fa fa-shopping-cart" aria-hidden="true">
-
                       </i>Thêm giỏ hàng</a>
-
                   </div>
                 </div>
               </div>

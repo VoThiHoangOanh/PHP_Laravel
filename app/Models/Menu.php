@@ -10,4 +10,7 @@ class Menu extends Model
     use HasFactory;
     protected $table='vtho_menu';
 
+    public function MainMenuSub(){
+        return $this->hasMany(Menu::class,'parent_id');
+    }
 }
