@@ -17,7 +17,10 @@ use App\Http\Controllers\backend\DashboardController;
 
 
 Route::get('/', [SiteController::class, 'index'])->name('frontend.home');
-// Route::get('lien-he/', [ContactController::class, 'index'])->name('frontend.index');
+Route::get('san-pham', [SiteController::class, 'product'])->name('frontend.product');
+Route::get('bai-viet', [SiteController::class, 'post'])->name('frontend.post');
+Route::get('thuong-hieu', [SiteController::class, 'brand'])->name('frontend.brand');
+Route::get('lien-he', [LienheController::class, 'index'])->name('frontend.index');
 
 
 
