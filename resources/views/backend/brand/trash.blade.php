@@ -83,7 +83,7 @@
                     
                        <a href="{{ route('brand.restore',['brand'=>$brand->id]) }}" 
                             class="btn btn-sm btn-success">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-undo-alt"></i>
                         </a> 
                        <a href="{{ route('brand.destroy',['brand'=>$brand->id]) }}"
                             class="btn btn-sm btn-danger">

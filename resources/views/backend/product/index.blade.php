@@ -2,11 +2,6 @@
 @section('title', 'Tất cả sản phẩm')
 @section('content')
 
-{{-- @php
-    dd($list_product);
-@endphp
- --}}
-
   <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -74,11 +69,20 @@
             </thead>
             <tbody>
                 @foreach ($list_product as $product)
+                @php
+                  $product_image= $product->productimg;
+                  if(count($product_image)>0)
+                  $hinh="";
+                  {
+                      $hinh=$product_image[0]["image"];
+                  }          
+                @endphp 
+
                 <tr>
                     <td class="text-center"><input type="checkbox"></td>
 
                     <td>
-                    <img class="img-fluid" src="{{ asset('public/images/product/'.$product->image)}}" alt="{{$product->image}}">
+                    <img class="img-fluid" src="{{ asset('public/images/product/'.$hinh)}}" alt="{{$hinh}}">
                     </td>
 
                     <td>{{ $product->name }}</td>

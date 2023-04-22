@@ -140,7 +140,7 @@ class SliderController extends Controller
         $file->move($path_dir, $filename);
         $slider->image= $filename;
         $slider->save();
-        return redirect()->route('slider.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+        return redirect()->route('slider.index')->with('message',['type'=>'success','msg'=>'Cập nhật Thành công']);
        }       
         
     }

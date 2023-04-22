@@ -85,7 +85,7 @@
                     
                        <a href="{{ route('slider.restore',['slider'=>$slider->id]) }}" 
                             class="btn btn-sm btn-success">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-undo-alt"></i>
                         </a> 
                        <a href="{{ route('slider.destroy',['slider'=>$slider->id]) }}"
                             class="btn btn-sm btn-danger">

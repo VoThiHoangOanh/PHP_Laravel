@@ -83,7 +83,7 @@
                     
                        <a href="{{ route('page.restore',['page'=>$page->id]) }}" 
                             class="btn btn-sm btn-success">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-undo-alt"></i>
                         </a> 
                        <a href="{{ route('page.destroy',['page'=>$page->id]) }}"
                             class="btn btn-sm btn-danger">

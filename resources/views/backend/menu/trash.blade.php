@@ -60,25 +60,9 @@
                     <td class="text-center">{{ $menu->position }}</td>
 
                     <td class="text-center">
-                    @if($menu->status==1)
-                    <a href="{{ route('menu.status',['menu'=>$menu->id]) }}"
-                            class="btn btn-sm btn-success">
-                            <i class="fas fa-toggle-on"></i>
-                    </a>
-                    @else
-                    <a href="{{ route('menu.status',['menu'=>$menu->id]) }}"
-                            class="btn btn-sm btn-danger">
-                            <i class="fas fa-toggle-off"></i>
-                    </a>
-                    @endif
-
-                       <a href="{{ route('menu.edit',['menu'=>$menu->id]) }}"
-                            class="btn btn-sm btn-info">
-                            <i class="fas fa-edit"></i>
-                        </a> 
                        <a href="{{ route('menu.show',['menu'=>$menu->id]) }}" 
                             class="btn btn-sm btn-success">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-undo-alt"></i>
                         </a> 
                        <a href="{{ route('menu.destroy',['menu'=>$menu->id]) }}"
                             class="btn btn-sm btn-danger">

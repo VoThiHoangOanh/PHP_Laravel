@@ -34,12 +34,10 @@ class BrandController extends Controller
     public function create()
     {
         $list_brand = Brand::where('status','!=',0)->get();
-        // $html_parent_id='';
         $html_sort_order='';
 
         foreach($list_brand as $item)
         {
-            // $html_parent_id.='<option value="'.$item->id.'">'.$item->name.'</option>';
             $html_sort_order.='<option value="'.$item->sort_order.'">Sau: '.$item->name.'</option>';
 
         }
@@ -56,9 +54,7 @@ class BrandController extends Controller
        $brand->slug= Str::slug($brand->name=$request->name,'-');
        $brand->metakey=$request->metakey;
        $brand->metadesc=$request->metadesc;
-    //    $brand->parent_id=$request->parent_id;
        $brand->sort_order=$request->sort_order;
-    //    $brand->image=$request->image;
        $brand->created_at=date('Y-m-d H:i:s');
        $brand->created_by=1;
        $brand->status=$request->status;
@@ -114,12 +110,10 @@ class BrandController extends Controller
     {
         $brand=Brand::find($id);
         $list_brand = Brand::where('status','!=',0)->get();
-        // $html_parent_id='';
         $html_sort_order='';
 
         foreach($list_brand as $item)
         {
-            // $html_parent_id.='<option value="'.$item->id.'">'.$item->name.'</option>';
             $html_sort_order.='<option value="'.$item->sort_order.'">Sau: '.$item->name.'</option>';
 
         }
@@ -136,7 +130,6 @@ class BrandController extends Controller
        $brand->slug= Str::slug($brand->name=$request->name,'-');
        $brand->metakey=$request->metakey;
        $brand->metadesc=$request->metadesc;
-    //    $brand->parent_id=$request->parent_id;
        $brand->sort_order=$request->sort_order;
        $brand->updated_at=date('Y-m-d H:i:s');
        $brand->updated_by=1;
@@ -163,10 +156,10 @@ class BrandController extends Controller
         $link= Link::where([['type','=','brand'],['table_id','=',$id]])->first();
         $link->slug= $brand->slug;
         $link->save();
-        return redirect()->route('brand.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+        return redirect()->route('brand.index')->with('message',['type'=>'success','msg'=>'Cập nhật Thành công']);
 
        }
-       return redirect()->route('brand.index')->with('message',['type'=>'danger','msg'=>'Thêm thất bại']);
+       return redirect()->route('brand.index')->with('message',['type'=>'danger','msg'=>'Cập nhập thất bại']);
         
     }
 

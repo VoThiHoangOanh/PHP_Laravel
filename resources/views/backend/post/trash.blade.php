@@ -85,7 +85,7 @@
                     
                        <a href="{{ route('post.restore',['post'=>$post->id]) }}" 
                             class="btn btn-sm btn-success">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-undo-alt"></i>
                         </a> 
                        <a href="{{ route('post.destroy',['post'=>$post->id]) }}"
                             class="btn btn-sm btn-danger">

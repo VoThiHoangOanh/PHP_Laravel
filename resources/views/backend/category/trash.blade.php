@@ -86,7 +86,7 @@
                     
                        <a href="{{ route('category.restore',['category'=>$category->id]) }}" 
                             class="btn btn-sm btn-success">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-undo-alt"></i>
                         </a> 
                        <a href="{{ route('category.destroy',['category'=>$category->id]) }}"
                             class="btn btn-sm btn-danger">

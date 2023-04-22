@@ -58,16 +58,6 @@
                   <td>Slug</td>
                   <td>{{$product->slug}}</td>
                 </tr>
-
-                <!-- <tr>
-                  <td>Parent_id</td>
-                  <td>{{$product->parent_id}}</td>
-                </tr>
-
-                <tr>
-                  <td>Sort_order</td>
-                  <td>{{$product->sort_order}}</td>
-                </tr> -->
                 <tr>
                   <td>Metakey</td>
                   <td>{{$product->metakey}}</td>

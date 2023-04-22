@@ -159,10 +159,10 @@ class CategoryController extends Controller
         $link= Link::where([['type','=','category'],['table_id','=',$id]])->first();
         $link->slug= $category->slug;
         $link->save();
-        return redirect()->route('category.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+        return redirect()->route('category.index')->with('message',['type'=>'success','msg'=>'Cập nhật Thành công']);
 
        }
-       return redirect()->route('category.index')->with('message',['type'=>'danger','msg'=>'Thêm thất bại']);
+       return redirect()->route('category.index')->with('message',['type'=>'danger','msg'=>'Cập nhật thất bại']);
         
     }
 

@@ -157,10 +157,10 @@ class PostController extends Controller
         $link= Link::where([['type','=','post'],['table_id','=',$id]])->first();
         $link->slug= $post->slug;
         $link->save();
-        return redirect()->route('post.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+        return redirect()->route('post.index')->with('message',['type'=>'success','msg'=>'Cập nhật Thành công']);
 
        }
-       return redirect()->route('post.index')->with('message',['type'=>'danger','msg'=>'Thêm thất bại']);
+       return redirect()->route('post.index')->with('message',['type'=>'danger','msg'=>'Cập nhật thất bại']);
         
     }
 

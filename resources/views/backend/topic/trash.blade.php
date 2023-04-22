@@ -86,7 +86,7 @@
                     
                        <a href="{{ route('topic.restore',['topic'=>$topic->id]) }}" 
                             class="btn btn-sm btn-success">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-undo-alt"></i>
                         </a> 
                        <a href="{{ route('topic.destroy',['topic'=>$topic->id]) }}"
                             class="btn btn-sm btn-danger">

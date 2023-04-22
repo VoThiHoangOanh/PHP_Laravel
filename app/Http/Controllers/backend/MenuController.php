@@ -237,7 +237,7 @@ class MenuController extends Controller
         $menu->updated_at=date('Y-m-d H:i:s');
         $menu->updated_by=1;
         $menu->save();
-        return redirect()->route('menu.index')->with('message',['type'=>'success','msg'=>'Thêm menu thành công']);
+        return redirect()->route('menu.index')->with('message',['type'=>'success','msg'=>'Cập nhật menu thành công']);
         
     }
 

@@ -16,9 +16,13 @@ class ProductUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'name'=>'required|min:2',
-           'metakey'=>'required',
-           'metadesc'=>'required'
+            'name'=>'required',
+            'detail'=>'required',
+            'metakey'=>'required',
+            'metadesc'=>'required',
+            'category_id'=>'required',
+            'brand_id'=>'required',
+            'price_buy'=>'required'
 
         ];
     }
@@ -26,11 +30,14 @@ class ProductUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-           'name.required'=>'Bạn chưa nhập tên',
-           'name.min'=>'Tên ít nhất 2 ký tự',
-
-           'metakey.required'=>'Chưa nhập từ khoá tìm kiếm',
-           'metadesc.required'=>'Chưa nhập mô tả'
+            'name.required'=>'Bạn chưa nhập tên',
+            'detail.required'=>'Chưa nhập chi tiết sản phẩm',
+            'metakey.required'=>'Chưa nhập từ khoá tìm kiếm',
+            'metadesc.required'=>'Chưa nhập mô tả',
+            'category_id.required'=>'Chưa chọn danh mục',
+            'brand_id.required'=>'Chưa chọn thương hiệu',
+            'price_buy.required'=>'Chưa chọn giá'
+ 
 
         ];
     }

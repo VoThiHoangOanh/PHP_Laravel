@@ -86,7 +86,7 @@
                     
                        <a href="{{ route('order.restore',['order'=>$order->id]) }}" 
                             class="btn btn-sm btn-success">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-undo-alt"></i>
                         </a> 
                        <a href="{{ route('order.destroy',['order'=>$order->id]) }}"
                             class="btn btn-sm btn-danger">

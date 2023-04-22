@@ -1,7 +1,7 @@
 <div class="row">
               <div class="col-md-9">
                 <div class="mb-3">
-                 <label for="name">Tên sản phẩm</label> 
+                 <label for="name">Tên sản phẩm edit</label> 
                  <input type="text" name="name" value="{{old('name',$product->name)}}" id="name" class="form-control"
                   placeholder="Nhập tên sản phẩm">
                   @if($errors->has('name'))

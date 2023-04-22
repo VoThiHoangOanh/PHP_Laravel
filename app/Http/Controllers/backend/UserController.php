@@ -128,7 +128,7 @@ class UserController extends Controller
         $file->move($path_dir, $filename);
         $user->image= $filename;
         $user->save();
-        return redirect()->route('user.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+        return redirect()->route('user.index')->with('message',['type'=>'success','msg'=>'Cập nhật Thành công']);
        }
        // end upload file
         

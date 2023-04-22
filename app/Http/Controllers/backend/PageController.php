@@ -140,10 +140,10 @@ class PageController extends Controller
         $link= Link::where([['type','=','page'],['table_id','=',$id]])->first();
         $link->slug= $page->slug;
         $link->save();
-        return redirect()->route('page.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
+        return redirect()->route('page.index')->with('message',['type'=>'success','msg'=>'Cập nhật Thành công']);
 
        }
-       return redirect()->route('page.index')->with('message',['type'=>'danger','msg'=>'Thêm thất bại']);
+       return redirect()->route('page.index')->with('message',['type'=>'danger','msg'=>'Cập nhật thất bại']);
         
     }
 
