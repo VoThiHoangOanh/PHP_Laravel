@@ -26,7 +26,7 @@ class AuthController extends Controller
       } 
       else
       {
-          return redirect('admin/login');
+          return redirect('login');
           // echo 'That bai';
           // var_dump($data);
           // echo bcrypt($password);
@@ -35,6 +35,6 @@ class AuthController extends Controller
   function logout()
   {
     Auth::logout();
-    return redirect('admin/login');
+    return redirect('login');
   }
 }

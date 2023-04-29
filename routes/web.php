@@ -18,14 +18,14 @@ use App\Http\Controllers\backend\AuthController;
 
 Route::get('/', [SiteController::class, 'index'])->name('frontend.home');
 Route::get('san-pham', [SiteController::class, 'product'])->name('frontend.product');
-Route::get('bai-viet', [SiteController::class, 'post'])->name('frontend.post_topic');
+Route::get('bai-viet', [SiteController::class, 'post'])->name('frontend.post');
 
 Route::get('thuong-hieu', [SiteController::class, 'brand'])->name('frontend.brand');
 Route::get('lien-he', [LienheController::class, 'index'])->name('frontend.index');
 //xử lý login
-Route::get('admin/login', [AuthController::class, 'getlogin'])->name('getlogin');
-Route::post('admin/login', [AuthController::class, 'postlogin'])->name('postlogin');
-Route::get('admin/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('login', [AuthController::class, 'getlogin'])->name('login');
+Route::post('login', [AuthController::class, 'postlogin'])->name('postlogin');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 //khai bao route cho quan ly

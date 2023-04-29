@@ -165,16 +165,41 @@ class SiteController extends Controller
     private function post_topic($slug)
     {
         $row_topic= Topic::where([['slug','=',$slug],['status','=','1']])->first();
-        $agrs= [
-            ['status','=','1'],
-            ['type','=','post'],
-            ['topic_id','=',$row_topic->id]
-        ];
-        $post_list= Post::where($agrs)
+        $list_topic_id=array();
+        array_push($list_topic_id, $row_topic->id);
+        //xét cấp con
+        $list_topic1= Topic::where([['parent_id','=',$row_topic->id],['status','=','1']])->get();
+        if(count($list_topic1) > 0)
+        {
+            foreach($list_topic1 as $row_topic1)
+            {
+                array_push($list_topic_id, $row_topic1->id);
+
+                $list_topic2= Topic::where([['parent_id','=',$row_topic1->id],['status','=','1']])->get();
+                if(count($list_topic2) > 0)
+                {
+                    foreach($list_topic2 as $row_topic2)
+                    {
+                        array_push($list_topic_id, $row_topic2->id);
+
+                        $llist_topic3= Topic::where([['parent_id','=',$row_topic2->id],['status','=','1']])->get();
+                        if(count($llist_topic3) > 0)
+                        {
+                            foreach($llist_topic3 as $row_topic3)
+                            {
+                                array_push($list_topic_id, $row_topic3->id);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+        $post_list= Post::where([['status','=',1],['type','=','post']])
+        ->whereIn('topic_id',$list_topic_id)
         ->orderBy('created_at','desc')
-        ->paginate(4);
-        
-        return view('frontend.post-topic',compact('post_list','row_topic'));
+        ->paginate(6);
+        return view('frontend.post-topic',compact ('post_list','row_topic') );
     }
     private function post_page($slug)
     {
@@ -188,17 +213,43 @@ class SiteController extends Controller
     }
     private function post_detail($post)
     {
-        $agrs= [
-            ['status','=','1'],
-            ['id','!=',$post->id],
-            ['type','=','post'],
-            ['topic_id','=',$post->topic_id]
-        ];
-        $post_list= Post::where($agrs)
+        $list_topic_id=array();
+        array_push($list_topic_id, $post->id);
+        
+        //xét cấp con
+        $list_topic1= Topic::where([['parent_id','=',$post->id],['status','=','1']])->get();
+        if(count($list_topic1) > 0)
+        {
+            foreach($list_topic1 as $row_topic1)
+            {
+                array_push($list_topic_id, $row_topic1->id);
+                $list_topic2= Topic::where([['parent_id','=',$row_topic1->id],['status','=','1']])->get();
+                if(count($list_topic2) > 0)
+                {
+                    foreach($list_topic2 as $row_topic2)
+                    {
+                        array_push($list_topic_id, $row_topic2->id);
+
+                        $llist_topic3= Topic::where([['parent_id','=',$row_topic2->id],['status','=','1']])->get();
+                        if(count($llist_topic3) > 0)
+                        {
+                            foreach($llist_topic3 as $row_topic3)
+                            {
+                                array_push($list_topic_id, $row_topic3->id);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+        $post_list= Post::where([['status','=',1],['type','=','post'],['id','!=',$post->id]])
+        ->whereIn('topic_id',$list_topic_id)
         ->orderBy('created_at','desc')
         ->take(4)
         ->get();
-        return view('frontend.post-detail',compact('post','post_list'));
+        return view('frontend.post-detail',compact ('post','post_list') );
+
         
     }
     private function error_404($slug)

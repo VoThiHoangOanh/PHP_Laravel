@@ -14,7 +14,7 @@ class LoginAdminMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(LoginRequest $request, Closure $next): Response
+    public function handle(Request $request, Closure $next): Response
     {
         if(Auth::check())
         {
@@ -26,13 +26,13 @@ class LoginAdminMiddleware
             }
             else
             {
-                return redirect('admin/login');
+                return redirect('login');
             }
 
         }
         else
         {
-            return redirect('admin/login');
+            return redirect('login');
 
         }
     }
