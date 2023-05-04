@@ -48,6 +48,7 @@ class SiteController extends Controller
                 $product = Product::where([['status','=',1],['slug','=',$slug]])->first();
                 if($product!=NULL)
                 {
+                    // dd($product);
                     return $this->product_detail($product);
                 }
                 else
@@ -55,6 +56,7 @@ class SiteController extends Controller
                     $post = Post::where([['status','=',1],['slug','=',$slug],['type','=','post']])->first();
                     if($post!=NULL)
                     {
+                        // dd($post);
                         return $this->post_detail($post);
                     }
                     else
@@ -198,7 +200,7 @@ class SiteController extends Controller
         $post_list= Post::where([['status','=',1],['type','=','post']])
         ->whereIn('topic_id',$list_topic_id)
         ->orderBy('created_at','desc')
-        ->paginate(6);
+        ->paginate(4);
         return view('frontend.post-topic',compact ('post_list','row_topic') );
     }
     private function post_page($slug)
@@ -248,9 +250,7 @@ class SiteController extends Controller
         ->orderBy('created_at','desc')
         ->take(4)
         ->get();
-        return view('frontend.post-detail',compact ('post','post_list') );
-
-        
+        return view('frontend.post-detail',compact ('post','post_list'));
     }
     private function error_404($slug)
     {
@@ -284,6 +284,4 @@ class SiteController extends Controller
         ->paginate(4);
     return view('frontend.post',compact('post_list'));
    }
-
-   
 }

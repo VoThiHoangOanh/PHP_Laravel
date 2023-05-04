@@ -42,7 +42,7 @@
     <h1>{{$product->name}}</h1>
     <p>{{$product->metadesc}}</p>
     <div class="mb-3">
-      <var class="price h1">{{$product->price_buy}} <sup>đ</sup></var>
+      <var class="price h1">{{number_format($product->price_buy)}} <sup>đ</sup></var>
     </div>
     <dl class="row-md-6">
       <dt class="col-mb-3">Thời gian giao hàng</dt>
@@ -79,29 +79,29 @@
     </div> <!-- col.// -->
     <aside class="col-md-4">
       <div class="box">
-        <h5 class="title-description">Dịch vụ & Khuyến mãi</h5>
+        <h3 class="title-description">Dịch vụ & Khuyến mãi</h3>
           <p>
             Giá cả hợp lý nhất.<br />
             Đa dạng về mẫu mã, chủng loại.<br />
             Giao hàng nhanh chóng, tiện lợi.<br />
             Nếu sản phẩm hết hàng, Vui lòng liên hệ ngay với chúng tôi.<br />
           </p>
-        <h5 class="title-description">Dịch vụ của chúng tôi</h5>
+        <h3 class="title-description">Dịch vụ của chúng tôi</h3>
           <article class="media mb-3">
             <div class="media-body">
-              <h6 class="mt-0"><a href="#">Hình thức vận chuyển</a></h6>
+              <h4 class="mt-0"><a href="#">Hình thức vận chuyển</a></h4>
               <p class="icontext"><i class="icon text-success fa fa-truck"></i> Giao hàng nhanh trong vòng 3-4 ngày</p>
              </div>
           </article>
           <article class="media mb-3">
             <div class="media-body">
-              <h6 class="mt-0"><a href="#"></a> Hàng chính hãng</h6>
+              <h4 class="mt-0"><a href="#">Hàng chính hãng</a></h4>
               <p>Cam kết nếu hình không đúng thực tế , bạn nhận ngay coupon mua hàng trị giá 2.000.000đ tại hệ thống siêu thị Big C.</p>
             </div>
           </article>
           <article class="media mb-3">
             <div class="media-body">
-              <h6 class="mt-0"><a href="#">Thanh toán</a></h6>
+              <h4 class="mt-0"><a href="#">Thanh toán</a></h4>
               <p>Khách hàng có thể lựa chọn một hoặc nhiều hình thức thanh toán.</p>
             </div>
           </article>
@@ -141,8 +141,8 @@
           <div class="row">
             <div class="col-md-12">
             <strong>
-                <span class="price">{{$row->price_buy}} VND </span>
-                <del>{{$row->price_sale}}</del>
+              <span class="price">{{number_format($product->price_buy)}} VND</span>
+              <del>{{number_format($product->price_sale)}}</del>
             </strong>
             </div>
             <div class="col-md-12 text-center">

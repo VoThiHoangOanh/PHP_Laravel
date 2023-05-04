@@ -20,7 +20,7 @@ class LoginAdminMiddleware
         {
             $user=Auth::user();
             //xét quyền
-            if($user->access==1)
+            if($user->roles==1)
             {
                 return $next($request);
             }

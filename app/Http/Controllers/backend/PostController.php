@@ -72,19 +72,14 @@ class PostController extends Controller
          $filename= $post->slug .'.' . $extension;
          $file->move($path_dir,$filename);
          $post->images=$filename;
+         $post->save();
+         return redirect()->route('post.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
         }
-         // end upload file  
-        if($post->save())//lưu vào csdl
+        else
         {
-         $link=new Link();
-         $link->slug= $post->slug;
-         $link->table_id= $post->id;
-         $link->type='post';
-         $link->save();
-        return redirect()->route('post.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
-
-       }
-       return redirect()->route('post.index')->with('message',['type'=>'danger','msg'=>'Thêm thất bại']);
+            return redirect()->route('post.index')->with('message',['type'=>'danger','msg'=>'Thêm thất bại']);
+        }
+       
     }
 
     /**
@@ -148,20 +143,13 @@ class PostController extends Controller
         $filename= $post->slug .'.' . $extension;
         $file->move($path_dir, $filename);
         $post->images= $filename;
-        
-       }
-       // end upload file
-
-       if($post->save())//lưu vào csdl
-       {
-        $link= Link::where([['type','=','post'],['table_id','=',$id]])->first();
-        $link->slug= $post->slug;
-        $link->save();
+        $post->save();
         return redirect()->route('post.index')->with('message',['type'=>'success','msg'=>'Cập nhật Thành công']);
-
        }
-       return redirect()->route('post.index')->with('message',['type'=>'danger','msg'=>'Cập nhật thất bại']);
-        
+       else
+       {
+        return redirect()->route('post.index')->with('message',['type'=>'danger','msg'=>'Cập nhật thất bại']);
+       }
     }
 
      //GET:admin/post/destroy/1

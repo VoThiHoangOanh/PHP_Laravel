@@ -12,50 +12,25 @@
 
 <div class="container my-4">
   <div class="row ">
-    <div class="col-md-6">
+    <div class="col-md-9">
+      <div class="post_item">
+        <h1>{{$post->title}}</h1>
+        @php
+          $date=!empty($post->updated_at) ? (new DateTime($post->updated_at))->format('H:i d/m/Y') : "";
+        @endphp
+        <p>Ngày đăng: {{$date}}</p>
+      </div>
+      <p>{{ $post->metadesc }}</p>
+      <p>{{ $post->detail }}</p>
+      <div class="my-4">
         <img class="img-fluid" src="{{ asset('public/images/post/'.$post->images)}}" alt="{{$post->images}}">      
+      </div>
     </div>
-  <div class="col-md-6 "></div>
-    <h1>{{$post->title}}</h1>
-    <p>{!! $post->metadesc !!}</p>
-  </div>
-  <div class ="my-4">
-  <h3>Chi tiết bài viết</h3>
-  <p>{!! $post->detail !!}</p>
-  </div>
-  @if(count($post_list)>0)
-  
-    <div class="row text-center">
-    <div class="owl-carousel owl-theme">
-      <div class="item">
-      <div class="post-item">
-        <div class="post-image">
-            <a href="{{ route('frontend.slug',['slug'=>$post->slug]) }}">
-              <img class="img-fluid" src="{{ asset('public/images/post/'.$post->images)}}" alt="{{$post->images}}">
-            </a>
-        </div>
-        <h3 class="post-name">
-          <a href="{{ route('frontend.slug',['slug'=>$post->slug]) }}">
-            {{$post->title}}
-          </a>
-        </h3>
-        <div class="post">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <a href="#" class="btn btn-default add-to-cart">
-                <i class="fa fa-eye">
-                </i>Xem thêm</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      @endforeach
+    <div class ="col-md-3">
+        <x-category-list/>
+        <x-brand-list/>
     </div>
   </div>
-</div>
-  @endif
-  
 </div>
 
 

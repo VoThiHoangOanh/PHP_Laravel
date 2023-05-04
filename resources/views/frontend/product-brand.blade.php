@@ -43,7 +43,7 @@
                 <div class="row">
                   <div class="col-md-12">
                   <strong>
-                    <span class="price">{{$product->price_buy}} VND</span>
+                  <span class="price">{{number_format($product->price_buy)}} VND</span>
                     <del>{{$product->price_sale}}</del>
                   </strong>
                   </div>

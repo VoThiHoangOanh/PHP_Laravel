@@ -32,12 +32,12 @@
           <div class="row">
             <div class="col-md-12">
               <strong>
-                <span class="price">{{$product->price_buy}} VND</span>
+                <span class="price">{{number_format($product->price_buy)}} VND</span>
                 <del>{{$product->price_sale}}</del>
               </strong>
             </div>
             <div class="col-md-12 text-center">
-              <a href="cart.html" class="btn btn-default add-to-cart">
+            <a href="{{route('giohang.addcart',['id'=>$product->id])}}" class="btn btn-default add-to-cart">
                 <i class="fa fa-shopping-cart" aria-hidden="true">
 
                 </i>Thêm giỏ hàng</a>

@@ -17,7 +17,6 @@
         </h2>
         <div class="row text-center">
         @foreach ($post_list as $post)
-
             <div class="item col-md-6 mb-6">
             <div class="post-item">
               <div class="post-image">
@@ -33,7 +32,7 @@
               <div class="post">
                 <div class="row text-center">
                   <div class="col-md-12 text-center">
-                    <a href="#" class="btn btn-default add-to-cart">
+                    <a href="{{ route('frontend.slug',['slug'=>$post->slug]) }}" class="btn btn-default add-to-cart">
                       <i class="fa fa-eye">
                       </i>Xem thêm</a>
                   </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\SiteController;
+use App\Http\Controllers\frontend\GioHangController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\TopicController;
 use App\Http\Controllers\backend\PostController;
@@ -29,7 +30,8 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 //khai bao route cho quan ly
-Route::prefix('admin','LoginAdmin')->group(function () {
+Route::prefix('admin')->middleware('LoginAdmin')->group(function () {
+    
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 //product
@@ -174,3 +176,10 @@ Route::prefix('admin','LoginAdmin')->group(function () {
 
 
 Route::get('{slug}', [SiteController::class, 'index'])->name('frontend.slug');
+
+///giỏ hàng
+Route::prefix('giohang')->group(function (){
+    Route::get('/', [GioHangController::class, 'index'])->name('frontend.giohang');
+    Route::get('giohang.addcart/{id}', [GioHangController::class, 'addcart'])->name('giohang.addcart');
+    
+});
