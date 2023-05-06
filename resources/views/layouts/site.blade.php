@@ -27,6 +27,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('public/images/ico/apple-touch-icon-114-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('public/images/ico/apple-touch-icon-72-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('public/images/ico/apple-touch-icon-57-precomposed.png')}}">
+	<style>
+		#change-item-cart table tbody tr td img
+		{
+			width: 70px;
+		}
+	</style>
 </head><!--/head-->
 
 <body>
@@ -76,44 +82,44 @@
                             </li>
                             <li class="cart-icon"><a href="#">
                                     <i class="fa fa-shopping-cart"></i> Giỏ hàng
-                                    <span>3</span>
+									@if(Session::get("Cart") !=null)
+									<span id="total-quanty-show">{{Session::get("Cart")->totalqty}}</span>
+									@else
+									<span id="total-quanty-show">0</span>
+									@endif
+                                    
                                 </a>
                                 <div class="cart-hover">
 									<div id="change-item-cart">
+									@if(Session::has("Cart") !=null)
 										<div class="select-items">
 											<table>
 												<tbody>
+													@foreach(Session::get('Cart')->product as $item)
+													
 													<tr>
 														<td class="si-pic"><img src="{{ asset('public/images/home/h33.jpg')}}" alt=""></td>
 														<td class="si-text">
 															<div class="product-selected">
-																<p>₫60.00 x 1</p>
-																<h6>Kabino Bedside Table</h6>
+																<p>{{number_format($item['productinfo']->price_buy)}} đ  x {{$item['qty']}}</p>
+																<h6>{{$item['productinfo']->name}}</h6>
 															</div>
 														</td>
 														<td class="si-close">
-															<i class="ti-close"></i>
+															<i class="ti-close" data-id="{{$item['productinfo']->id}}"></i>
 														</td>
 													</tr>
-													<tr>
-														<td class="si-pic"><img src="{{ asset('public/images/home/h22.jpg')}}" alt=""></td>
-														<td class="si-text">
-															<div class="product-selected">
-																<p>₫60.00 x 1</p>
-																<h6>Kabino Bedside Table</h6>
-															</div>
-														</td>
-														<td class="si-close">
-															<i class="ti-close"></i>
-														</td>
-													</tr>
+													@endforeach                   
 												</tbody>
 											</table>
-										</div>
-										<div class="select-total">
-											<span>total:</span>
-											<h5>₫120.00</h5>
-										</div>
+											</div>
+											<div class="select-total">
+												<span>total:</span>
+												<h5>{{number_format(Session::get('Cart')->totalprice_buy)}} đ</h5>
+											</div>
+										  
+										@endif                               
+
 									</div>
                                     
                                     <div class="select-button">
@@ -242,6 +248,52 @@
     <script src="{{asset('public/js/jquery.dd.min.js')}}"></script>
     <script src="{{asset('public/js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('public/js/main.js')}}"></script>
+
+	<!-- JavaScript -->
+	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+	<!-- Default theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+	<!-- Semantic UI theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+	<!-- Bootstrap theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+	<!-- JavaScript -->
+
+	<script>
+	function AddCart(id)
+		{
+			$.ajax({
+				url:'addcart/'+id,
+				type:'GET',
+
+			}).done(function(response){
+				// console.log(response);
+				RenderCart(response);
+				 alertify.success('Đã thêm mới sản phẩm');
+			});
+		}	
+		$("#change-item-cart").on("click",".si-close i", 
+		function (){
+			$.ajax({
+				url:'delete-cart/'+ $(this).data("id"),
+				type:'GET',
+
+			}).done(function(response){
+				RenderCart(response);
+				alertify.success('Đã xoá sản phẩm thành công');
+			});
+		});
+		function RenderCart(response)
+		{
+			$("#change-item-cart").empty();
+			$("#change-item-cart").html(response);
+			$("total-quanty-show").text($("#total-quanty-cart").val());
+			
+		}
+	</script>
 
 	@yield('footer')
 </body>

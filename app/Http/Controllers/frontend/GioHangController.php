@@ -14,7 +14,6 @@ class GioHangController extends Controller
 
     public function index()
     {
-        return view('frontend.cart-index');
         $product =DB::table('vtho_product')->get();
        return view('index',compact('product'));
     }
@@ -27,14 +26,31 @@ class GioHangController extends Controller
             $newcart = new Cart($oldcart);
             $newcart->AddCart($product,$id);
 
-            $request->session()->put('Cart',$newcart);
+            $request->Session()->put('Cart',$newcart);
             // dd(Session('Cart'));
             
            
         }
-        // return redirect()->route('giohang.addcart');
-        return view('frontend.cart-index',compact('newcart'));
+
+        return view('frontend.cart');
 
     }
+    public function DeleteCart(Request $request ,$id)
+    {
+        $oldcart = Session('Cart') ? Session('Cart'):null;
+        $newcart = new Cart($oldcart);
+        $newcart->DeleteCart($id);
 
+        if(Count( $newcart->product) > 0)
+        {
+            $request->Session()->put('Cart', $newcart);
+        }
+        else
+        {
+            $request->Session()->forget('Cart');
+        }
+
+        return view('frontend.cart');
+
+    }
 }
