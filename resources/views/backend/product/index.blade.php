@@ -26,9 +26,19 @@
         <div class="card">
           <div class="card-header">
            <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-2">
                 <button class="btn btn-sm btn-danger"type="submit"><i class="far fa-calendar-times"></i>Xoá</button>
             </div>
+            <div class="col-md-4">
+                  <form action="" class ="form-inline" >
+                    <div class="form-group">
+                      <input class="form-control" name="key" placeholder="Tìm kiếm">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    </button>
+                  </form>
+              </div>
             <div class="col-md-6 text-right">
                 <a href="{{ route('product.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Thêm</a>
                 <a href="{{ route('product.trash') }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Thùng rác</a>

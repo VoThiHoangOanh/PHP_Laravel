@@ -24,6 +24,7 @@ class ProductController extends Controller
     public function index()
     {
         $list_product = Product :: where('vtho_product.status','!=',0)->orderBy('vtho_product.created_at','desc')
+        ->search()
         ->paginate(9);
         return view('backend.product.index', compact('list_product'));
     }

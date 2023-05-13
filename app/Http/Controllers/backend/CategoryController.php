@@ -19,6 +19,7 @@ class CategoryController extends Controller
     {
         $list_category = Category::where('status','!=',0)
         ->orderBy('created_at','desc')
+        ->search()
         ->paginate(5);
         return view('backend.category.index', compact('list_category'));
     }

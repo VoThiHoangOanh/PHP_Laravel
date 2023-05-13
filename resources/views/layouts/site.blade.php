@@ -82,7 +82,7 @@
                             </li>
                             <li class="cart-icon"><a href="#">
                                     <i class="fa fa-shopping-cart"></i> Giỏ hàng
-									@if(Session::get("Cart") !=null)
+									@if(Session::has("Cart") != null)
 									<span id="total-quanty-show">{{Session::get("Cart")->totalqty}}</span>
 									@else
 									<span id="total-quanty-show">0</span>
@@ -95,10 +95,18 @@
 										<div class="select-items">
 											<table>
 												<tbody>
-													@foreach(Session::get('Cart')->product as $item)
+													@foreach(Session::get("Cart")->products as $item)
+													@php
+														$product_image =  $item['img'];;
+														$hinh=null;
+														if(count($product_image)>0)
+														{
+														$hinh = $product_image[0]["image"];
+														}
+													@endphp
 													
 													<tr>
-														<td class="si-pic"><img src="{{ asset('public/images/home/h33.jpg')}}" alt=""></td>
+													<td class="si-pic"><img src="{{ asset('public/images/product/'.$hinh)}}" alt="{{$hinh}}"></td>
 														<td class="si-text">
 															<div class="product-selected">
 																<p>{{number_format($item['productinfo']->price_buy)}} đ  x {{$item['qty']}}</p>
@@ -115,7 +123,7 @@
 											</div>
 											<div class="select-total">
 												<span>total:</span>
-												<h5>{{number_format(Session::get('Cart')->totalprice_buy)}} đ</h5>
+												<h5>{{number_format(Session::get("Cart")->totalprice_buy)}} đ</h5>
 											</div>
 										  
 										@endif                               
@@ -123,7 +131,7 @@
 									</div>
                                     
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                        <a href="{{ route('giohang.list-cart') }}" class="primary-btn view-card">VIEW CARD</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
@@ -247,7 +255,7 @@
     <script src="{{asset('public/js/jquery.zoom.min.js')}}"></script>
     <script src="{{asset('public/js/jquery.dd.min.js')}}"></script>
     <script src="{{asset('public/js/jquery.slicknav.js')}}"></script>
-    <script src="{{asset('public/js/main.js')}}"></script>
+    
 
 	<!-- JavaScript -->
 	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
@@ -286,13 +294,23 @@
 				alertify.success('Đã xoá sản phẩm thành công');
 			});
 		});
-		function RenderCart(response)
-		{
-			$("#change-item-cart").empty();
-			$("#change-item-cart").html(response);
-			$("total-quanty-show").text($("#total-quanty-cart").val());
-			
+		
+		function RenderCart(response){
+        // console.log(response)
+        if (response)
+        {
+            $("#change-item-cart").empty();
+            $("#change-item-cart").html(response);
+            console.log($("#total-quanty-cart"));
+            $("#total-quanty-show").text($("#total-quanty-cart").val());
+        }
+        else
+        {
+            $("#change-item-cart").empty();
+            $("#total-quanty-show").text('0')
+        }
 		}
+
 	</script>
 
 	@yield('footer')

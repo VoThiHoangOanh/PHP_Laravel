@@ -18,6 +18,7 @@ class BrandController extends Controller
     public function index()
     {
         $list_brand = Brand::where('status','!=',0)->orderBy('created_at','desc')
+        ->search()
         ->paginate(9);
         return view('backend.brand.index', compact('list_brand'));
     }

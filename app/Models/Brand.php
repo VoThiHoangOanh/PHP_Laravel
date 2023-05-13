@@ -9,4 +9,13 @@ class Brand extends Model
 {
     use HasFactory;
     protected $table='vtho_brand';
+
+    public function scopeSearch($query)
+    {
+        if($key = request()->key)
+        {
+            $query =$query->where ('name','like','%'.$key.'%');
+        }
+        return $query;
+    }
 }

@@ -61,7 +61,7 @@
         </div>
       </div> <!-- col.// -->
       <div class="form-group col-md">
-        <a href="#" id="addtocart" class="btn  btn-primary">
+        <a onclick="AddCart({{$product->id}})" href="javascript:" href="#" id="addtocart" class="btn  btn-primary">
           <i class="fa fa-shopping-cart"></i>
             <span class="text">
               Thêm vào giỏ hàng
@@ -142,11 +142,11 @@
             <div class="col-md-12">
             <strong>
               <span class="price">{{number_format($product->price_buy)}} VND</span>
-              <del>{{number_format($product->price_sale)}}</del>
+              <!-- <del>{{number_format($product->price_sale)}}</del> -->
             </strong>
             </div>
             <div class="col-md-12 text-center">
-              <a href="cart.html" class="btn btn-default add-to-cart">
+              <a onclick="AddCart({{$product->id}})" href="javascript:" href="cart.html" class="btn btn-default add-to-cart">
                 <i class="fa fa-shopping-cart" aria-hidden="true">
 
                 </i>Thêm giỏ hàng</a>

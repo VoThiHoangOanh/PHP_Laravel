@@ -14,4 +14,13 @@ class Category extends Model
         return $this->hasMany(Category::class,'parent_id');
     }
 
+    public function scopeSearch($query)
+    {
+        if($key = request()->key)
+        {
+            $query =$query->where ('name','like','%'.$key.'%');
+        }
+        return $query;
+    }
+
 }

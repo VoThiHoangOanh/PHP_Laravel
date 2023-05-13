@@ -7,6 +7,7 @@
 @endphp
  --}}
 
+
   <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -30,15 +31,26 @@
         <!-- Default box -->
         <div class="card">
           <div class="card-header">
-           <div class="row">
-            <div class="col-md-6">
-                <button class="btn btn-sm btn-danger"type="submit"><i class="far fa-calendar-times"></i>Xoá</button>
+            <div class="row">
+              <div class="col-md-2">
+                  <button class="btn btn-sm btn-danger"type="submit"><i class="far fa-calendar-times"></i>Xoá</button>
+              </div>
+
+              <div class="col-md-4">
+                  <form action="" class ="form-inline" >
+                    <div class="form-group">
+                      <input class="form-control" name="key" placeholder="Tìm kiếm">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    </button>
+                  </form>
+              </div>
+              <div class="col-md-6 text-right">
+                  <a href="{{ route('category.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Thêm</a>
+                  <a href="{{ route('category.trash') }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Thùng rác</a>
+              </div>
             </div>
-            <div class="col-md-6 text-right">
-                <a href="{{ route('category.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Thêm</a>
-                <a href="{{ route('category.trash') }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Thùng rác</a>
-            </div>
-           </div>
           </div>
           <div class="card-body">
             @includeIf('backend.message_alert')

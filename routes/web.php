@@ -175,12 +175,14 @@ Route::prefix('admin')->middleware('LoginAdmin')->group(function () {
 
 
 
+Route::get('list-cart', [GioHangController::class, 'ListCart'])->name('giohang.list-cart');
 Route::get('{slug}', [SiteController::class, 'index'])->name('frontend.slug');
 
 ///giỏ hàng
     Route::get('giohang', [GioHangController::class, 'index'])->name('giohang.index');
     Route::get('addcart/{id}', [GioHangController::class, 'addcart'])->name('giohang.addcart');
-    Route::get('delete-cart/{id}', [GioHangController::class, 'delete-cart'])->name('giohang.delete-cart');
+    Route::get('delete-cart/{id}', [GioHangController::class, 'DeleteCart'])->name('giohang.delete-cart');
+    Route::get('delete-list-cart/{id}', [GioHangController::class, 'DeleteListCart'])->name('giohang.delete-list-cart');
    
 
     
