@@ -143,15 +143,9 @@
             </div>
         </div>
 </div>
-
-
-<!-- gọi tên file của main-menu -->
-		<x-main-menu/>  
-		
+<!-- gọi tên file của main-menu -->	
 	</header><!--/header-->
-	
-	<x-slidershow/>
-	
+	<x-main-menu/> 
 	<section>
 		<div class="container">
 			<div class="row">

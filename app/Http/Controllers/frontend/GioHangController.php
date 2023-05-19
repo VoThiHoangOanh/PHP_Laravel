@@ -64,7 +64,7 @@ class GioHangController extends Controller
     {
         $oldcart = Session('Cart') ? Session('Cart'):null;
         $newcart = new Cart($oldcart);
-        $newcart->DeleteListCart($id);
+        $newcart->DeleteCart($id);
 
         if(Count( $newcart->products) > 0)
         {
@@ -75,7 +75,31 @@ class GioHangController extends Controller
             $request->Session()->forget('Cart');
         }
 
-        return view('frontend.cart-index');
+        return view('frontend.list-cart');
 
+    }
+
+    public function SaveListCart(Request $request ,$id,$qty)
+    {
+        
+        $oldcart = Session('Cart') ? Session('Cart'):null;
+        $newcart = new Cart($oldcart);
+        $newcart->UpdateCart($id,$qty);
+        $request->Session()->put('Cart', $newcart);
+
+        return view('frontend.list-cart');
+
+    }
+
+
+    public function SaveAllCart(Request $request )
+    {
+        foreach ($request->data as $item)
+        {
+            $oldcart = Session('Cart') ? Session('Cart'):null;
+            $newcart = new Cart($oldcart);
+            $newcart->UpdateCart( $item["key"],  $item["value"]);
+            $request->Session()->put('Cart', $newcart);
+        }
     }
 }

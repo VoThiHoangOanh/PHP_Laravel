@@ -12,6 +12,7 @@ class Cart
     public $totalprice_buy=0;
     public $totalqty=0;
 
+
     public function __construct($cart)
     {
         if($cart)
@@ -46,6 +47,18 @@ class Cart
         $this->totalqty -= $this->products[$id]['qty'];
         $this->totalprice_buy -= $this->products[$id]['price_buy'];
         unset($this->products[$id]);
+    }
+
+    public function UpdateCart($id,$qty)
+    {
+        $this->totalqty -= $this->products[$id]['qty'];
+        $this->totalprice_buy -= $this->products[$id]['price_buy'];
+
+        $this->products[$id]['qty'] = $qty;
+        $this->products[$id]['price_buy']=$qty * $this->products[$id]['productinfo']->price_buy;
+
+        $this->totalqty += $this->products[$id]['qty'];
+        $this->totalprice_buy += $this->products[$id]['price_buy'];
     }
 }
 

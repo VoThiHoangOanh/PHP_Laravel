@@ -21,8 +21,10 @@ Route::get('/', [SiteController::class, 'index'])->name('frontend.home');
 Route::get('san-pham', [SiteController::class, 'product'])->name('frontend.product');
 Route::get('bai-viet', [SiteController::class, 'post'])->name('frontend.post');
 
+Route::get("/tim-kiem", [SiteController::class, 'timkiem'])->name('frontend.timkiem');
+
 Route::get('thuong-hieu', [SiteController::class, 'brand'])->name('frontend.brand');
-Route::get('lien-he', [LienheController::class, 'index'])->name('frontend.index');
+// Route::get('lien-he', [LienheController::class, 'index'])->name('frontend.index');
 //xử lý login
 Route::get('login', [AuthController::class, 'getlogin'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin'])->name('postlogin');
@@ -117,17 +119,17 @@ Route::prefix('admin')->middleware('LoginAdmin')->group(function () {
 
     });
 
-   // orderdetail
-    Route::resource('orderdetail', OrderDetailController::class);
-    Route::get('orderdetail_trash',[OrderDetailController::class,'trash'])->name('orderdetail.trash');
+//    // orderdetail
+//     Route::resource('orderdetail', OrderDetailController::class);
+//     Route::get('orderdetail_trash',[OrderDetailController::class,'trash'])->name('orderdetail.trash');
 
-    Route::prefix('orderdetail')->group(function () {
-        Route::get('status/{orderdetail}',[OrderDetailController::class,'status'])->name('orderdetail.status');
-        Route::get('delete/{orderdetail}',[OrderDetailController::class,'delete'])->name('orderdetail.delete');
-        Route::get('restore/{orderdetail}',[OrderDetailController::class,'restore'])->name('orderdetail.restore');
-        Route::get('destroy/{orderdetail}',[OrderDetailController::class,'destroy'])->name('orderdetail.destroy');
+//     Route::prefix('orderdetail')->group(function () {
+//         Route::get('status/{orderdetail}',[OrderDetailController::class,'status'])->name('orderdetail.status');
+//         Route::get('delete/{orderdetail}',[OrderDetailController::class,'delete'])->name('orderdetail.delete');
+//         Route::get('restore/{orderdetail}',[OrderDetailController::class,'restore'])->name('orderdetail.restore');
+//         Route::get('destroy/{orderdetail}',[OrderDetailController::class,'destroy'])->name('orderdetail.destroy');
 
-    });
+//     });
 
 
 
@@ -176,6 +178,8 @@ Route::prefix('admin')->middleware('LoginAdmin')->group(function () {
 
 
 Route::get('list-cart', [GioHangController::class, 'ListCart'])->name('giohang.list-cart');
+Route::post('save-all', [GioHangController::class, 'SaveAllCart'])->name('giohang.save-all');
+
 Route::get('{slug}', [SiteController::class, 'index'])->name('frontend.slug');
 
 ///giỏ hàng
@@ -183,6 +187,8 @@ Route::get('{slug}', [SiteController::class, 'index'])->name('frontend.slug');
     Route::get('addcart/{id}', [GioHangController::class, 'addcart'])->name('giohang.addcart');
     Route::get('delete-cart/{id}', [GioHangController::class, 'DeleteCart'])->name('giohang.delete-cart');
     Route::get('delete-list-cart/{id}', [GioHangController::class, 'DeleteListCart'])->name('giohang.delete-list-cart');
+    Route::get('save-list-cart/{id}/{qty}', [GioHangController::class, 'SaveListCart'])->name('giohang.save-list-cart');
+    
    
 
     
