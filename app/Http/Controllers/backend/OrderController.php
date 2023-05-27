@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\User;
 use App\Models\OrderDetail;
 use App\Models\Link;
 use Illuminate\Support\Str;
@@ -92,33 +93,8 @@ class OrderController extends Controller
        $order->updated_at=date('Y-m-d H:i:s');
        $order->updated_by=1;
        $order->status=$request->status;
-       //upload file
-       if($request->has('image'))
-       {
-        $path_dir="public/images/order/";
-        if(File::exists($path_dir . $order->image))
-        {
-            File::delete($path_dir . $order->image);
-        }
-       
-        $file= $request->file('image');
-        $extension = $file->getClientOriginalExtension();
-        $filename= $slug .'.' . $extension;
-        $file->move($path_dir, $filename);
-        $order->image= $filename;
-       }
-       // end upload file
-
-       if($order->save())//lưu vào csdl
-       {
-        $link= Link::where([['type','=','order'],['table_id','=',$id]])->first();
-        $link->slug= $order->slug;
-        $link->save();
-        return redirect()->route('order.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
-
-       }
-       return redirect()->route('order.index')->with('message',['type'=>'danger','msg'=>'Thêm thất bại']);
-        
+       $order->save();
+       return redirect()->route('order.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
     }
 
      //GET:admin/order/destroy/1

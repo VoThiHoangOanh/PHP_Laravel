@@ -20,6 +20,9 @@
                     {{$errors->first('detail')}}
                   </div>
                   @endif
+                  <script>
+                    CKEDITOR.replace("detail")
+                  </script>
                 </div>
 
                 <div class="mb-3">
@@ -42,6 +45,9 @@
                     {{$errors->first('metadesc')}}
                   </div>
                   @endif
+                  <!-- <script>
+                    CKEDITOR.replace("metadesc")
+                  </script> -->
                 </div>
 
 

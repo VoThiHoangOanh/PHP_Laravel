@@ -20,7 +20,7 @@
                                     $hinh = $product_image[0]["image"];
                                 }    
                         @endphp
-                            <div class="item col-c">
+                        <div class="item col-md-6 mb-6">
                                 <div class="product-item">
                                     <div class="product-image">
                                         <a href="{{ route('frontend.slug', ['slug' => $product->slug]) }}">

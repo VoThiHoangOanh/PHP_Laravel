@@ -2,11 +2,6 @@
 @section('title', 'Tất cả đơn hàng')
 @section('content')
 
-{{-- @php
-    dd($list_order);
-@endphp
- --}}
-
   <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">

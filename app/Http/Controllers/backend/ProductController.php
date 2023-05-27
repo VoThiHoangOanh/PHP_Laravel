@@ -250,7 +250,7 @@ class ProductController extends Controller
        // end upload file
 
     //    $product->save();
-       return redirect()->route('product.index')->with('message',['type'=>'danger','msg'=>'Cập nhật thất bại']);
+       return redirect()->route('product.index')->with('message',['type'=>'success','msg'=>'Cập nhật thành công']);
         
     }
 //////

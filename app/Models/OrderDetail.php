@@ -9,5 +9,7 @@ class OrderDetail extends Model
 {
     use HasFactory;
     protected $table='vtho_orderdetail';
+    public $timestamps= false;
+
 
 }

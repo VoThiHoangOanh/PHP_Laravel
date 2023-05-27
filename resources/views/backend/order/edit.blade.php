@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-6 text-right">
                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Lưu[Cập nhật]</button>
-                <a href="{{ route('order.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
+                <a href="{{ route('order.index') }}" class="btn btn-info btn-sm"><i class="fas fa-reply"></i> Quay về danh sách</a>
             </div>
            </div>
           </div>
@@ -76,29 +76,7 @@
 
 
               </div>
-              <div class="col-md-3">
-                <div class="mb-3">
-                 <label for="parent_id">Danh mục cấp cha</label> 
-                 <select class="form-control" name="parent_id" id="parent_id">
-                  <option value="0">--Cấp cha--</option>
-                  {!! $html_parent_id !!}
-                 </select>
-                </div>
-
-                <div class="mb-3">
-                 <label for="sort_order">Vị trí sắp xếp</label> 
-                 <select class="form-control" name="sort_order" id="sort_order">
-                  <option value="0">--Vị trí sắp xếp--</option>
-                  {!! $html_sort_order !!}
-                 </select>
-                </div>
-
-                <div class="mb-3">
-                 <label for="image">Hình đại diện</label> 
-                 <input type="file" name="image" value="{{ old('image')}}" id="image" class="form-control">
-                </div>
-
-                
+              <div class="col-md-3">                
                 <div class="mb-3">
                  <label for="status">Trạng thái</label> 
                  <select class="form-control" name="status" id="status">

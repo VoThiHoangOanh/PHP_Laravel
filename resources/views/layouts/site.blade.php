@@ -97,7 +97,7 @@
 												<tbody>
 													@foreach(Session::get("Cart")->products as $item)
 													@php
-														$product_image =  $item['img'];;
+														$product_image =  $item['img'];
 														$hinh=null;
 														if(count($product_image)>0)
 														{
@@ -120,7 +120,7 @@
 													@endforeach                   
 												</tbody>
 											</table>
-											</div>
+										</div>
 											<div class="select-total">
 												<span>total:</span>
 												<h5>{{number_format(Session::get("Cart")->totalprice_buy)}} đ</h5>

@@ -15,7 +15,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th></th>
+                <th class="close-td"><a href="{{route('frontend.home')}}" class="btn btn-info btn-sm">Mua thêm</a></th>
                 <th class="close-td first-row edit-all" ><i class="ti-save"></i></th>
                 <th class="close-td first-row del-all"><i class="ti-close"></i></th>
             </tr>
@@ -24,7 +24,7 @@
             @if(Session::has("Cart") !=null)
             @foreach(Session::get('Cart')->products as $item)
             @php
-               $product_image =  $item['img'];;
+               $product_image =  $item['img'];
                 $hinh=null;
                 if(count($product_image)>0)
                    {
@@ -62,7 +62,7 @@
                     <li class="subtotal">Tổng số lượng <span>{{Session::get("Cart")->totalqty}}</span></li>
                     <li class="cart-total">Thành tiền <span>{{number_format(Session::get("Cart")->totalprice_buy)}} đ</span></li>
                 </ul>
-                <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                <a href="{{route('giohang.checkout')}}" class="proceed-btn ">Đặt hàng</a>
             @endif 
         </div>
         

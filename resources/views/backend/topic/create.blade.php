@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-6 text-right">
                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> Lưu[Thêm]</button>
-                <a href="{{ route('topic.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
+                <a href="{{ route('topic.index') }}" class="btn btn-info btn-sm"><i class="fas fa-reply"></i> Quay về danh sách</a>
             </div>
            </div>
           </div>
@@ -71,6 +71,9 @@
                     {{$errors->first('metadesc')}}
                   </div>
                   @endif
+                  <script>
+                    CKEDITOR.replace("metadesc")
+                  </script>
                 </div>
 
 

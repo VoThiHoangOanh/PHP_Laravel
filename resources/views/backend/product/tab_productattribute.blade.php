@@ -20,6 +20,9 @@
                     {{$errors->first('metadescs')}}
                   </div>
                   @endif
+                  <!-- <script>
+                    CKEDITOR.replace("metadescs")
+                  </script> -->
                 </div>
 
 

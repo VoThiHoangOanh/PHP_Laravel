@@ -119,17 +119,17 @@ Route::prefix('admin')->middleware('LoginAdmin')->group(function () {
 
     });
 
-//    // orderdetail
-//     Route::resource('orderdetail', OrderDetailController::class);
-//     Route::get('orderdetail_trash',[OrderDetailController::class,'trash'])->name('orderdetail.trash');
+   // orderdetail
+    Route::resource('orderdetail', OrderDetailController::class);
+    Route::get('orderdetail_trash',[OrderDetailController::class,'trash'])->name('orderdetail.trash');
 
-//     Route::prefix('orderdetail')->group(function () {
-//         Route::get('status/{orderdetail}',[OrderDetailController::class,'status'])->name('orderdetail.status');
-//         Route::get('delete/{orderdetail}',[OrderDetailController::class,'delete'])->name('orderdetail.delete');
-//         Route::get('restore/{orderdetail}',[OrderDetailController::class,'restore'])->name('orderdetail.restore');
-//         Route::get('destroy/{orderdetail}',[OrderDetailController::class,'destroy'])->name('orderdetail.destroy');
+    Route::prefix('orderdetail')->group(function () {
+        Route::get('status/{orderdetail}',[OrderDetailController::class,'status'])->name('orderdetail.status');
+        Route::get('delete/{orderdetail}',[OrderDetailController::class,'delete'])->name('orderdetail.delete');
+        Route::get('restore/{orderdetail}',[OrderDetailController::class,'restore'])->name('orderdetail.restore');
+        Route::get('destroy/{orderdetail}',[OrderDetailController::class,'destroy'])->name('orderdetail.destroy');
 
-//     });
+    });
 
 
 
@@ -171,14 +171,17 @@ Route::prefix('admin')->middleware('LoginAdmin')->group(function () {
 
     });
 
-
-
 });
 
 
 
 Route::get('list-cart', [GioHangController::class, 'ListCart'])->name('giohang.list-cart');
 Route::post('save-all', [GioHangController::class, 'SaveAllCart'])->name('giohang.save-all');
+Route::post('delete-all', [GioHangController::class, 'DeleteAllCart'])->name('giohang.delete-all');
+
+Route::get('checkout', [GioHangController::class, 'Checkout'])->name('giohang.checkout');
+Route::post('postcheckout', [GioHangController::class, 'PostCheckout'])->name('giohang.postcheckout');
+
 
 Route::get('{slug}', [SiteController::class, 'index'])->name('frontend.slug');
 
@@ -188,6 +191,8 @@ Route::get('{slug}', [SiteController::class, 'index'])->name('frontend.slug');
     Route::get('delete-cart/{id}', [GioHangController::class, 'DeleteCart'])->name('giohang.delete-cart');
     Route::get('delete-list-cart/{id}', [GioHangController::class, 'DeleteListCart'])->name('giohang.delete-list-cart');
     Route::get('save-list-cart/{id}/{qty}', [GioHangController::class, 'SaveListCart'])->name('giohang.save-list-cart');
+    
+
     
    
 

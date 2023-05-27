@@ -108,14 +108,20 @@
 
           <li class="nav-item">
                 <a href="{{ route('user.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-user"></i>
                   <p>Quản lý người dùng</p>
                 </a>
           </li>
 
 
+          <li class="nav-item">
+            <a href="{{route('logout')}}" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i>
+              <p class="text">Đăng xuất</p>
+            </a>
+          </li>
 
-          <li class="nav-header">LABELS</li>
+          <!-- <li class="nav-header">LABELS</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-circle text-danger"></i>
@@ -133,6 +139,6 @@
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Informational</p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>

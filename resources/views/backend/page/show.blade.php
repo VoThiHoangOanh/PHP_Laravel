@@ -33,7 +33,7 @@
             <a href="{{ route('page.edit',['page'=>$page->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Sửa</a>
             <a href="{{ route('page.delete',['page'=>$page->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xoá </a>
 
-                <a href="{{ route('page.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
+                <a href="{{ route('page.index') }}" class="btn btn-info btn-sm"><i class="fas fa-reply"></i> Quay về danh sách</a>
             </div>
            </div>
           </div>

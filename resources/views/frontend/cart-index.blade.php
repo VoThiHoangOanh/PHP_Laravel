@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 
-<div class="breacrumb-section">
+<!-- <div class="breacrumb-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -15,10 +15,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <section class="shopping-cart spad">
         <div class="container">
+        @if(Session::has("Cart") !=null)
             <div class="row">
                 <div class="col-lg-12" id="list-cart">
                 <div class="cart-table">
@@ -39,7 +40,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th></th>
+                            <th  class="close-td"><a href="{{route('frontend.home')}}" class="btn btn-info btn-sm">Mua thêm</a></th>
                             <th class="close-td first-row edit-all" ><i class="ti-save"></i></th>
                             <th class="close-td first-row del-all"><i class="ti-close"></i></th>
                         </tr>
@@ -48,7 +49,7 @@
                         @if(Session::has("Cart") !=null)
                         @foreach(Session::get("Cart")->products as $item)
                         @php
-                            $product_image =  $item['img'];;
+                            $product_image =  $item['img'];
                             $hinh=null;
                             if(count($product_image)>0)
                             {
@@ -86,13 +87,16 @@
                             <li class="subtotal">Tổng số lượng <span>{{Session::get("Cart")->totalqty}}</span></li>
                             <li class="cart-total">Thành tiền <span>{{number_format(Session::get("Cart")->totalprice_buy)}} đ</span></li>
                         </ul>
-                        <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                        <a href="{{route('giohang.checkout')}}" class="proceed-btn ">Đặt hàng</a>
                     @endif 
                     </div>
                 </div>
             </div>
                 </div>
             </div>
+            @else
+                <div class="text-center"><h2>Giỏ hàng trống</h2></div>
+            @endif
         </div>
     </section>
     <!-- Shopping Cart Section End -->	
@@ -110,6 +114,7 @@
 			}).done(function(response){
 				// console.log(response);
 				RenderListCart(response);
+                location.reload();
 				alertify.success('Đã xoá sản phẩm thành công');
 			});
         }
@@ -123,6 +128,7 @@
 
 			}).done(function(response){
 				RenderListCart(response);
+                location.reload();
 				alertify.success('Đã cập nhật sản phẩm thành công');
 			});
         }
@@ -178,6 +184,34 @@
                 
 			});
         });
+
+
+        $(".del-all").on("click", function (){
+            var lists =[];
+            $("table tbody tr td").each(function(){
+                $(this).find("input").each(function() {
+                    var element ={ key: $(this).data("id"), value: $(this).val()};
+                    lists.push(element);
+                    
+                });
+            });
+            $.ajax({
+				url:'delete-all',
+				type:'POST',
+                // data: data,
+                data : {
+                    _token: '{{ csrf_token() }}',
+                    data : lists,
+                }
+			}).done(function(response){
+				// console.log(response);
+				location.reload();
+				alertify.success('Đã xoá sản phẩm thành công');
+                
+                
+			});
+        });
+
 
     </script>
 @endsection

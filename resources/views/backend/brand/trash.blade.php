@@ -30,7 +30,7 @@
                 <button class="btn btn-sm btn-danger"type="submit"><i class="far fa-calendar-times"></i>Xoá</button>
             </div>
             <div class="col-md-6 text-right">
-            <a href="{{ route('brand.index') }}" class="btn btn-info btn-sm"><i class="fas fa-trash"></i> Quay về danh sách</a>
+            <a href="{{ route('brand.index') }}" class="btn btn-info btn-sm"><i class="fas fa-reply"></i> Quay về danh sách</a>
 
             </div>
            </div>

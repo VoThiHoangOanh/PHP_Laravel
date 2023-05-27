@@ -4,7 +4,7 @@
         <tbody>
             @foreach(Session::get("Cart")->products as $item)
             @php
-                $product_image =  $item['img'];;
+                $product_image =  $item['img'];
                 $hinh=null;
                 if(count($product_image)>0)
                 {
