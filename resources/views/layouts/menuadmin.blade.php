@@ -97,12 +97,7 @@
                   <p>Tất cả đơn hàng</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ route('orderdetail.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>chi tiết đơn hàng</p>
-                </a>
-              </li>
+              
             </ul>
           </li>
 

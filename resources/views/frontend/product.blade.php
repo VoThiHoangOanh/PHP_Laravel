@@ -31,11 +31,12 @@
           <img src="{{ asset('public/images/product/'. $hinh)}}" alt="{{ $hinh }}" />
           </a>
         </div>
-        <h3 class="product-name">
+      </br>
+        <h4 class="product-name">
           <a href="{{ route('frontend.slug',['slug'=>$product->slug]) }}">
             {{$product->name}}
           </a>
-        </h3>
+        </h4>
         <div class="product-price">
           <div class="row">
             <div class="col-md-12">

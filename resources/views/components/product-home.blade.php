@@ -17,38 +17,36 @@
         
       @endphp
       <div class="item">
-      <div class="product-item">
-        <div class="product-image">
-          <a href="{{ route('frontend.slug',['slug'=>$product->slug]) }}">
-          <img src="{{ asset('public/images/product/'. $hinh)}}" alt="{{ $hinh }}" />
-          </a>
-        </div>
-        <h3 class="product-name">
-          <a href="{{ route('frontend.slug',['slug'=>$product->slug]) }}">
-            {{$product->name}}
-          </a>
-        </h3>
-        <div class="product-price">
-          <div class="row">
-            <div class="col-md-12">
-              <strong>
-                <span class="price">{{number_format($product->price_buy)}} VND</span>
-                <del>{{$product->price_sale}}</del>
-              </strong>
+          <div class="product-item">
+            <div class="product-image">
+              <a href="{{ route('frontend.slug',['slug'=>$product->slug]) }}">
+              <img src="{{ asset('public/images/product/'. $hinh)}}" alt="{{ $hinh }}" />
+              </a>
             </div>
-            <div class="col-md-12 text-center">
-            <a onclick="AddCart({{$product->id}})" href="javascript:" class="btn btn-default add-to-cart">
-                <i class="fa fa-shopping-cart" aria-hidden="true">
-
-                </i>Thêm giỏ hàng</a>
-
+            </br>
+            <h4 class="product-name">
+              <a href="{{ route('frontend.slug',['slug'=>$product->slug]) }}">
+                {{$product->name}}
+              </a>
+            </h4>
+            <div class="product-price">
+              <div class="row">
+                <div class="col-md-12">
+                  <strong>
+                    <span class="price">{{number_format($product->price_buy)}} VND</span>
+                    <del>{{$product->price_sale}}</del>
+                  </strong>
+                </div>
+                <div class="col-md-12 text-center">
+                  <a onclick="AddCart({{$product->id}})" href="javascript:" class="btn btn-default add-to-cart">
+                    <i class="fa fa-shopping-cart" aria-hidden="true">
+                    </i>Thêm giỏ hàng</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      </div>
       @endforeach
     </div>
   </div>
-
 </div>

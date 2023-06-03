@@ -20,13 +20,18 @@ class OrderController extends Controller
     #GET: admin/order, admin/order/index
     public function index()
     {
-        $list_order = Order ::
-        join('vtho_orderdetail','vtho_orderdetail.order_id','=','vtho_order.id')
-        ->join('vtho_user','vtho_user.id','=','vtho_order.user_id')
+
+        // $list_order = Order ::
+        // join('vtho_orderdetail','vtho_orderdetail.order_id','=','vtho_order.id')
+        // ->join('vtho_user','vtho_user.id','=','vtho_order.user_id')
+        // ->orderBy('vtho_order.created_at','desc')
+        // ->paginate(9);
+
+
+        $list_order = Order::where('status','!=',0)
         ->orderBy('vtho_order.created_at','desc')
         ->paginate(9);
         return view('backend.order.index', compact('list_order'));
-
     }
 
     #GET:  admin/order/trash
@@ -65,67 +70,12 @@ class OrderController extends Controller
         {
             return view('backend.order.show',compact('order'));
         }
+        
     }
 
     /**
      * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $list_order = Order ::where('vtho_order.id','=',$id)
-        ->join('vtho_orderdetail','vtho_orderdetail.order_id','=','vtho_order.id')
-        ->join('vtho_user','vtho_user.id','=','vtho_order.user_id')
-        ->orderBy('vtho_order.created_at','desc')
-        ->first();
-        return view('backend.order.edit',compact('list_order'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(OrderUpdateRequest $request, string $id)
-    {
-       $order= Order::find($id);//lấy mẫu tin
-       $order->name=$request->name;
-       $slug= Str::slug($order->name=$request->name,'-');
-       $order->phone=$request->phone;
-       $email->phone=$request->email;
-       $order->updated_at=date('Y-m-d H:i:s');
-       $order->updated_by=1;
-       $order->status=$request->status;
-       $order->save();
-       return redirect()->route('order.index')->with('message',['type'=>'success','msg'=>'Thêm Thành công']);
-    }
-
-     //GET:admin/order/destroy/1
-    public function destroy(string $id)
-    {
-        $order= Order::find($id);
-        //lấy ra thông tin tấm hình cần xoá
-        $path_dir="public/images/order/";
-        $path_image_delete=($path_dir.$order->image);
-        //
-        if ($order == null){
-         return redirect()->route('order.trash')->with('message',['type'=>'danger','msg'=>'Mẫu tin không tồn tại']);
- 
-        }
-
-        if($order->delete())//lưu vào csdl
-        {
-            if(File::exists($path_image_delete))
-            {
-                File::delete($path_image_delete);
-            }
-
-         $link= Link::where([['type','=','order'],['table_id','=',$id]])->first();
-         $link->delete();
-         return redirect()->route('order.trash')->with('message',['type'=>'success','msg'=>'Xoá Thành công']);
- 
-        }
-       
-         return redirect()->route('order.trash')->with('message',['type'=>'danger','msg'=>'Xoá không thành công']);
-
-    }
+     */    
 
     //GET:admin/order/status/1
     public function status( string $id)
@@ -140,22 +90,6 @@ class OrderController extends Controller
         $order->updated_by=1;
         $order->save();
         return redirect()->route('order.index')->with('message',['type'=>'success','msg'=>'Thay đổi trạng thái thành công']);
-    }
-
-
-    //GET:admin/delete/delete/1
-    public function delete( string $id)
-    {
-       $order= Order::find($id);
-       if ($order == null){
-        return redirect()->route('order.index')->with('message',['type'=>'danger','msg'=>'Mẫu tin không tồn tại']);
-
-       }
-       $order->status=0;
-        $order->updated_at= date('Y-m-d H:i:s');
-        $order->updated_by=1;
-        $order->save();
-        return redirect()->route('order.index')->with('message',['type'=>'success','msg'=>'Xoá vào thùng rác thành công']);
     }
     //GET:admin/order/restore/1
     public function restore( string $id)

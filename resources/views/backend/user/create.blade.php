@@ -63,6 +63,17 @@
                 </div>
 
                 <div class="mb-3">
+                  <label for="address">Địa chỉ</label> 
+                  <input type="text" name="address" value="{{old('address')}}" id="address" class="form-control"
+                   placeholder="Nhập địa chỉ">
+                   @if($errors->has('address'))
+                   <div class="text-danger">
+                     {{$errors->first('address')}}
+                   </div>
+                   @endif
+                 </div>
+
+                <div class="mb-3">
                  <label for="password">Mật khẩu</label> 
                  <input type="password" name="password" value="{{old('password')}}" id="password" class="form-control"
                   placeholder="Nhập password">
@@ -123,6 +134,19 @@
                   </div>
                   @endif
                 </div>
+
+                <div class="mb-3">
+                  <label for="roles">Phận sự</label> 
+                  <select class="form-control" name="roles" id="roles">
+                     <option value="1">Admin</option>
+                     <option value="0">User</option>
+                  </select>
+                  @if($errors->has('roles'))
+                   <div class="text-danger">
+                     {{$errors->first('roles')}}
+                   </div>
+                   @endif
+                 </div>
 
 
                 <div class="mb-3">

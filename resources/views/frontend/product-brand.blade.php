@@ -14,7 +14,7 @@
       <div class="section-product-category">
         <h2 class="text-center category-title">
           {{$row_brand->name}}
-        </h2>
+        </h2></br>
         <div class="row text-center">
         @foreach ($product_list as $product)
 
@@ -34,6 +34,7 @@
                 <img class="img-fluid w-100" src="{{ asset('public/images/product/'. $hinh)}}" alt="{{ $hinh }}" />
                 </a>
               </div>
+              </br>
               <h3 class="product-name">
                 <a href="{{ route('frontend.slug',['slug'=>$product->slug]) }}">
                   {{$product->name}}
@@ -70,5 +71,3 @@
 
 
 @endsection
-
-

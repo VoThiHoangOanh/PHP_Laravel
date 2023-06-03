@@ -17,7 +17,7 @@ class UserController extends Controller
     #GET: admin/user, admin/user/index
     public function index()
     {
-        $list_user = User::where([['roles', '=', 'admin'],['status', '!=', 0] ])
+       $list_user = User::where([['status', '!=', 0]])
         ->paginate(9);
         return view('backend.user.index', compact('list_user'));
     }
@@ -45,7 +45,8 @@ class UserController extends Controller
        $user->name=$request->name;
        $user->username=$request->username;
        $user->phone=$request->phone;
-       $user->roles='admin';
+       $user->address = $request->address;
+       $user->roles = $request->roles;
        $user->password=$request->password;
        $user->email=$request->email;
        $user->gender=$request->gender;
@@ -106,6 +107,7 @@ class UserController extends Controller
        $user->name=$request->name;
        $user->username=$request->username;
        $user->phone=$request->phone;
+       $user->address = $request->address;
        $user->password=$request->password;
        $user->email=$request->email;
        $user->gender=$request->gender;

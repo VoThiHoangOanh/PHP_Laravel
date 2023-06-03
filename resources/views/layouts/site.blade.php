@@ -40,10 +40,20 @@
 		<div class="header_top"><!--header_top-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6 ">
-                    Chào Mừng Bạn Đã Ghé Thăm Shop Thời Trang Hoàng Oanh !!!
+					<div class="col-sm-9">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="#">
+									<marquee>
+										<div class="text-danger font-weight-bolder">
+											<h5>Chào Mừng Bạn Đã Ghé Thăm Shop Thời Trang Hoàng Oanh !!! </h5>
+										</div>
+									</marquee>
+								</a></li>
+							</ul>
+						</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-3">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -59,11 +69,10 @@
 		</div><!--/header_top-->
 		<div class="header-middle">
 		<div class="container">
-            <div class="inner-header">
-                <div class="row">
+                <div class=" row inner-header">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="{{ asset('public/images/home/logo7.png')}}" alt="" /></a>
+							<a href="index.html"><img style="width:70%" src="{{ asset('public/images/home/11.png')}}" alt="" /></a>
 						</div>
 					</div>
                     <div class="col-lg-8 text-right col-md-8">
@@ -140,7 +149,7 @@
                     </div>
                     
                 </div>
-            </div>
+
         </div>
 </div>
 <!-- gọi tên file của main-menu -->	

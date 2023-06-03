@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Chi tiết danh mục sản phẩm')
+@section('title', 'Chi tiết đơn hàng')
 @section('content')
 
 <div class="content-wrapper">
@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>CHI TIẾT DANH MỤC</h1>
+            <h1>CHI TIẾT ĐƠN HÀNG</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-              <li class="breadcrumb-item active">Chi tiết danh mục</li>
+              <li class="breadcrumb-item active">Chi tiết đơn hàng</li>
             </ol>
           </div>
         </div>
@@ -30,8 +30,7 @@
                 
             </div>
             <div class="col-md-6 text-right">
-            <a href="{{ route('order.edit',['order'=>$order->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-            <a href="{{ route('order.delete',['order'=>$order->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xoá </a>
+          
 
                 <a href="{{ route('order.index') }}" class="btn btn-info btn-sm"><i class="fas fa-reply"></i> Quay về danh sách</a>
             </div>
@@ -50,37 +49,30 @@
                 </tr>
 
                 <tr>
-                  <td>Name</td>
+                  <td>Tên</td>
                   <td>{{$order->name}}</td>
                 </tr>
 
                 <tr>
-                  <td>Slug</td>
-                  <td>{{$order->slug}}</td>
+                  <td>Email</td>
+                  <td>{{$order->email}}</td>
                 </tr>
 
-                <!-- <tr>
-                  <td>Parent_id</td>
-                  <td>{{$order->parent_id}}</td>
-                </tr>
-
+                
                 <tr>
-                  <td>Sort_order</td>
-                  <td>{{$order->sort_order}}</td>
-                </tr> -->
-                <tr>
-                  <td>Metakey</td>
-                  <td>{{$order->metakey}}</td>
+                  <td>Điện thoại</td>
+                  <td>{{$order->phone}}</td>
                 </tr>
                 <tr>
-                  <td>Metadesc</td>
-                  <td>{{$order->metadesc}}</td>
+                  <td>Địa chỉ</td>
+                  <td>{{$order->address}}</td>
                 </tr>
 
                
               </table>
            
           </div>
+
           <!-- /.card-body -->
           <div class="card-footer">
             Footer
