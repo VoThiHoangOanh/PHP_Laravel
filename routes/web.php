@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\SiteController;
+use App\Http\Controllers\frontend\ContactController;
+
 use App\Http\Controllers\frontend\GioHangController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\TopicController;
@@ -21,7 +23,8 @@ Route::get('/', [SiteController::class, 'index'])->name('frontend.home');
 Route::get('san-pham', [SiteController::class, 'product'])->name('frontend.product');
 Route::get('bai-viet', [SiteController::class, 'post'])->name('frontend.post');
 
-Route::get('lien-he', [SiteController::class, 'contact'])->name('frontend.contact');
+Route::get('lien-he', [ContactController::class, 'index'])->name('frontend.contact');
+Route::post('lien-he', [ContactController::class, 'postcontact'])->name('frontend.postcontact');
 
 Route::get("/tim-kiem", [SiteController::class, 'timkiem'])->name('frontend.timkiem');
 

@@ -24,16 +24,6 @@
 
         <!-- Default box -->
         <div class="card">
-          <div class="card-header">
-           <div class="row">
-            <div class="col-md-6">
-                <button class="btn btn-sm btn-danger"type="submit"><i class="far fa-calendar-times"></i>Xoá</button>
-            </div>
-            <div class="col-md-6 text-right">
-                <a href="{{ route('order.trash') }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Thùng rác</a>
-            </div>
-           </div>
-          </div>
           <div class="card-body">
             @includeIf('backend.message_alert')
             <table class="table table-bordered">

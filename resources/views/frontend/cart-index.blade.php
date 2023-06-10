@@ -114,7 +114,7 @@
 			}).done(function(response){
 				// console.log(response);
 				RenderListCart(response);
-                location.reload();
+               // location.reload();
 				alertify.success('Đã xoá sản phẩm thành công');
 			});
         }
@@ -128,7 +128,7 @@
 
 			}).done(function(response){
 				RenderListCart(response);
-                location.reload();
+               // location.reload();
 				alertify.success('Đã cập nhật sản phẩm thành công');
 			});
         }

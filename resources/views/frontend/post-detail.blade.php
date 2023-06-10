@@ -14,7 +14,7 @@
   <div class="row ">
     <div class="col-md-9">
       <div class="post_item">
-        <h1>{{$post->title}}</h1>
+        <h3>{{$post->title}}</h3>
         @php
           $date=!empty($post->updated_at) ? (new DateTime($post->updated_at))->format('H:i d/m/Y') : "";
         @endphp

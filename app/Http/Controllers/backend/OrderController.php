@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\User;
 use App\Models\OrderDetail;
 use App\Models\Link;
+use App\Models\Product;
 use Illuminate\Support\Str;
 use App\Http\Requests\OrderStoreRequest;
 use App\Http\Requests\OrderUpdateRequest;
@@ -61,6 +62,7 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
+        $list_orderdetail= OrderDetail::where('order_id','=',$id)->get();
         $order= Order::find($id);
         if ($order == null){
          return redirect()->route('order.index')->with('message',['type'=>'danger','msg'=>'Mẫu tin không tồn tại']);
@@ -68,7 +70,7 @@ class OrderController extends Controller
         }
         else 
         {
-            return view('backend.order.show',compact('order'));
+            return view('backend.order.show',compact('order','list_orderdetail'));
         }
         
     }

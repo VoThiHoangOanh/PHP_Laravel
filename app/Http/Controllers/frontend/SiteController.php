@@ -200,7 +200,7 @@ class SiteController extends Controller
         $post_list= Post::where([['status','=',1],['type','=','post']])
         ->whereIn('topic_id',$list_topic_id)
         ->orderBy('created_at','desc')
-        ->paginate(4);
+        ->paginate(6);
         return view('frontend.post-topic',compact ('post_list','row_topic') );
     }
     private function post_page($slug)

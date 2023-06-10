@@ -69,13 +69,11 @@
 		</div><!--/header_top-->
 		<div class="header-middle">
 		<div class="container">
-                <div class=" row inner-header">
+                <div class=" row inner-header" style="padding: 0px">
 					<div class="col-sm-4">
-						<div class="logo pull-left">
-							<a href="index.html"><img style="width:70%" src="{{ asset('public/images/home/11.png')}}" alt="" /></a>
-						</div>
+						<a href="index.html"><img style="width:70%" src="{{ asset('public/images/home/11.png')}}" alt="" /></a>
 					</div>
-                    <div class="col-lg-8 text-right col-md-8">
+                    <div class="col-lg-8 text-right col-md-10" style="padding: 20px">
 					<ul class="nav-right">
 
 							<li class="heart-icon">
@@ -89,7 +87,7 @@
                                     <span>1</span>
                                 </a>
                             </li>
-                            <li class="cart-icon"><a href="#">
+                            <li class="cart-icon"><a href="{{ route('giohang.list-cart') }}">
                                     <i class="fa fa-shopping-cart"></i> Giỏ hàng
 									@if(Session::has("Cart") != null)
 									<span id="total-quanty-show">{{Session::get("Cart")->totalqty}}</span>

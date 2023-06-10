@@ -72,8 +72,10 @@
                                     @endphp
 									<div  class="row">
 									<!--  one item	 -->
-										<div class="media col-md-4">
-                                            <img width="100px" src="{{ asset('public/images/product/'.$hinh)}}" alt="{{$hinh}}">
+										<div class="media col-md-3">
+                                            <div>
+                                                <img width="100px" src="{{ asset('public/images/product/'.$hinh)}}" alt="{{$hinh}}">
+                                            </div></br>
                                         </div>
 										<div class="media-body col-md-8">
 											<p class="font-large">{{$item['productinfo']->name}}</p>

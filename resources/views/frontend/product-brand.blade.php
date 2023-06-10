@@ -12,9 +12,9 @@
     </div>
     <div class="col-md-9">
       <div class="section-product-category">
-        <h2 class="text-center category-title">
+        <h2 class="title text-center" class="btn-default">
           {{$row_brand->name}}
-        </h2></br>
+        </h2>
         <div class="row text-center">
         @foreach ($product_list as $product)
 
@@ -27,7 +27,7 @@
               }
               
             @endphp
-            <div class="col-md-6 mb-6">
+            <div class="col-md-4 mb-6">
             <div class="product-item">
               <div class="product-image">
                 <a href="{{ route('frontend.slug',['slug'=>$product->slug]) }}">
@@ -35,11 +35,11 @@
                 </a>
               </div>
               </br>
-              <h3 class="product-name">
-                <a href="{{ route('frontend.slug',['slug'=>$product->slug]) }}">
+              <h4 class="product-name">
+                <a href="{{ route('frontend.slug',['slug'=>$product->slug]) }}" class="btn-default">
                   {{$product->name}}
                 </a>
-              </h3>
+              </h4>
               <div class="product-price">
                 <div class="row">
                   <div class="col-md-12">

@@ -17,18 +17,22 @@
         </h2>
         <div class="row text-center">
         @foreach ($post_list as $post)
-            <div class="item col-md-6 mb-6">
+            <div class="item col-md-4 mb-6">
             <div class="post-item">
               <div class="post-image">
                 <a href="{{ route('frontend.slug',['slug'=>$post->slug]) }}">
                 <img class="img-fluid" src="{{ asset('public/images/post/'.$post->images)}}" alt="{{$post->images}}">
                 </a>
               </div>
-              <h3 class="post-name">
+              <h6 class="post-name">
                 <a href="{{ route('frontend.slug',['slug'=>$post->slug]) }}">
                   {{$post->title}}
                 </a>
-              </h3>
+                @php
+                $date=!empty($post->updated_at) ? (new DateTime($post->updated_at))->format('H:i d/m/Y') : "";
+               @endphp
+              <p>Ngày đăng: {{$date}}</p>
+              </h6>
               <div class="post">
                 <div class="row text-center">
                   <div class="col-md-12 text-center">

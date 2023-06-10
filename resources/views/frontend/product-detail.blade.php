@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-6 "></div>
    
-      <h5>{{$product->metadesc}} </h5></br>
+      <h4>{{$product->metadesc}} </h4></br>
       <!-- <h4>{{$product->metadesc}}</h4> -->
       
       <div class="mb-3">
@@ -58,29 +58,19 @@
 			<p><b>7 ngày miễn phí trả hàng</b> </p>
 			<p><b>Hàng chính hãng 100%</b> </p>
       <div class="form-row  md-4">
-        <div class="form-group col-md flex-grow-0">
+        <!-- <div class="form-group col-md flex-grow-0">
           <div class="input-group mb-3 input-spinner">
               <input type="text" id="ipQuantity" class="form-control" value="1">
           </div>
-        </div> 
-        <div class="form-group col-md">
+        </div>  -->
+        
           <a onclick="AddCart({{$product->id}})" href="javascript:" href="#" id="addtocart" class="btn  btn-primary">
             <i class="fa fa-shopping-cart"></i>
               <span class="text">
                 Thêm vào giỏ hàng
               </span>
           </a>
-        </div>
-
-        <div class="form-group col-md">
-          <a onclick="AddCart({{$product->id}})" href="javascript:" href="#" id="addtocart" class="btn  btn-primary">
-            <i class="fa fa-shopping-cart"></i>
-              <span class="text">
-                Thêm vào giỏ hàng
-              </span>
-          </a>
-        </div>
-              
+                    
       </div>
   </div>
   </br>

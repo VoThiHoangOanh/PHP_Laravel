@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>THÊM TẤT CẢ SẢN PHẨM</h1>
+            <h1>THÊM SẢN PHẨM</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
